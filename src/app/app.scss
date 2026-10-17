@@ -449,7 +449,8 @@
   color: #ffffff;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   margin: 0;
 }
 
@@ -460,7 +461,8 @@
   line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   margin-top: 4px;
   background: linear-gradient(90deg, #10b981 0%, #34d399 40%, #38bdf8 100%);
   -webkit-background-clip: text;
@@ -709,8 +711,8 @@ a.hero-btn {
 
 .photo-frame {
   position: relative;
-  width: clamp(380px, 45vh, 430px);
-  height: clamp(470px, 58vh, 535px);
+  width: clamp(240px, 45vh, 430px);
+  height: clamp(300px, 58vh, 535px);
   max-width: 100%;
   flex-shrink: 0;
 }
@@ -867,6 +869,7 @@ a.hero-btn {
   display: flex;
   align-items: center;
   gap: 6px;
+  text-align: left;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
 
   .term-prompt {
@@ -884,7 +887,9 @@ a.hero-btn {
   color: #f1f5f9;
   letter-spacing: 0.02em;
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
 
   .term-arrow {
@@ -2219,6 +2224,10 @@ a.hero-btn {
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    padding-top: 100px;
+  }
+
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 48px;
