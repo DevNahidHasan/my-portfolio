@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, HostListener, signal, Pipe, PipeTransform } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, HostListener, signal, Pipe, PipeTransform, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Pipe({ name: 'highlightCode', standalone: true, pure: true })
@@ -37,12 +37,17 @@ export interface Project {
   styleUrl: './app.scss'
 })
 export class App implements OnInit, OnDestroy {
+  private isBrowser: boolean;
   // ─── Nav State ───────────────────────────────────────────
   isScrolled = signal(false);
   menuOpen = signal(false);
   activeSection = signal('home');
   currentYear = new Date().getFullYear();
   private observers: IntersectionObserver[] = [];
+
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   // ─── Contact Form ─────────────────────────────────────────
   contactForm = {
@@ -230,12 +235,12 @@ export class App implements OnInit, OnDestroy {
 
   openProjectModal(project: Project): void {
     this.selectedProject.set(project);
-    document.body.style.overflow = 'hidden';
+    if (this.isBrowser) document.body.style.overflow = 'hidden';
   }
 
   closeProjectModal(): void {
     this.selectedProject.set(null);
-    document.body.style.overflow = '';
+    if (this.isBrowser) document.body.style.overflow = '';
   }
 
   skillGroups = [
@@ -329,8 +334,10 @@ export class App implements OnInit, OnDestroy {
 
   // ─── Lifecycle ────────────────────────────────────────────
   ngOnInit(): void {
-    this.setupIntersectionObserver();
-    this.setupScrollReveal();
+    if (this.isBrowser) {
+      this.setupIntersectionObserver();
+      this.setupScrollReveal();
+    }
   }
 
   ngOnDestroy(): void {
@@ -339,7 +346,9 @@ export class App implements OnInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.isScrolled.set(window.scrollY > 20);
+    if (this.isBrowser) {
+      this.isScrolled.set(window.scrollY > 20);
+    }
   }
 
   @HostListener('document:keydown.escape')
@@ -352,6 +361,7 @@ export class App implements OnInit, OnDestroy {
   // ─── Navigation ───────────────────────────────────────────
   scrollTo(sectionId: string): void {
     this.menuOpen.set(false);
+    if (!this.isBrowser) return;
     const el = document.getElementById(sectionId);
     if (el) {
       const offset = 80;
