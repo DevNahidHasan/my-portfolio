@@ -549,8 +549,8 @@
         </div>
         <h3 class="more-github-title">More on GitHub</h3>
         <p class="more-github-desc">Source code, issues and development history &mdash;</p>
-        <a href="https://github.com" target="_blank" rel="noopener" class="more-github-link">
-          github.com/nahidhasan
+        <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="more-github-link">
+          github.com/DevNahidHasan
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
       </div>
@@ -720,31 +720,22 @@
         <div class="contact-info-card card">
           <h3>Contact Details</h3>
           <div class="contact-items">
-            <a href="mailto:your@email.com" class="contact-item">
+            <a href="mailto:smnahid.hsn@gmail.com" class="contact-item">
               <div class="contact-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
                 <div class="contact-label">Email</div>
-                <div class="contact-value">your&#64;email.com</div>
+                <div class="contact-value">smnahid.hsn@gmail.com</div>
               </div>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="contact-item">
-              <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <div>
-                <div class="contact-label">GitHub</div>
-                <div class="contact-value">github.com/yourname</div>
-              </div>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-item">
+            <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" class="contact-item">
               <div class="contact-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </div>
               <div>
                 <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">linkedin.com/in/yourname</div>
+                <div class="contact-value">linkedin.com/in/DevNahidHasan</div>
               </div>
             </a>
           </div>
@@ -764,23 +755,74 @@
             <form class="contact-form" (ngSubmit)="submitForm()">
               <h3>Send a Message</h3>
               @if (formError()) {
-                <div class="form-error-msg">Please fill in all fields.</div>
+                <div class="form-error-msg">{{ formErrorMessage() }}</div>
               }
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input id="name" type="text" [(ngModel)]="contactForm.name" name="name" placeholder="John Doe" autocomplete="name">
+                <input
+                  id="name"
+                  type="text"
+                  [(ngModel)]="contactForm.name"
+                  name="name"
+                  placeholder="John Doe"
+                  autocomplete="name"
+                  (blur)="touchField('name')"
+                  (input)="touchField('name')"
+                  [class.input-error]="fieldTouched().name && getNameError()"
+                  [disabled]="formSubmitting()">
+                @if (fieldTouched().name && getNameError()) {
+                  <span class="field-error-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {{ getNameError() }}
+                  </span>
+                }
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input id="email" type="email" [(ngModel)]="contactForm.email" name="email" placeholder="john@example.com" autocomplete="email">
+                <input
+                  id="email"
+                  type="email"
+                  [(ngModel)]="contactForm.email"
+                  name="email"
+                  placeholder="john@example.com"
+                  autocomplete="email"
+                  (blur)="touchField('email')"
+                  (input)="touchField('email')"
+                  [class.input-error]="fieldTouched().email && getEmailError()"
+                  [disabled]="formSubmitting()">
+                @if (fieldTouched().email && getEmailError()) {
+                  <span class="field-error-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {{ getEmailError() }}
+                  </span>
+                }
               </div>
               <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" [(ngModel)]="contactForm.message" name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+                <textarea
+                  id="message"
+                  [(ngModel)]="contactForm.message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message here..."
+                  (blur)="touchField('message')"
+                  (input)="touchField('message')"
+                  [class.input-error]="fieldTouched().message && getMessageError()"
+                  [disabled]="formSubmitting()"></textarea>
+                @if (fieldTouched().message && getMessageError()) {
+                  <span class="field-error-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {{ getMessageError() }}
+                  </span>
+                }
               </div>
-              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
-                Send Message
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" [disabled]="formSubmitting()">
+                @if (formSubmitting()) {
+                  <span>Sending...</span>
+                } @else {
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+                  <span>Send Message</span>
+                }
               </button>
             </form>
           }
@@ -797,15 +839,15 @@
   <div class="container footer-inner">
     <div class="footer-logo">
       <span class="logo-bracket">&lt;</span>
-      <span class="logo-name">NH</span>
-      <span class="logo-bracket">/&gt;</span>
+      <span class="logo-name"> S M Nahid Hasan </span>
+      <span class="logo-bracket">&gt;</span>
     </div>
     <p class="footer-text">
       Designed &amp; Built by <span class="accent">S M Nahid Hasan</span> · {{ currentYear }}
     </p>
     <div class="footer-links">
-      <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+      <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
     </div>
   </div>
 </footer>

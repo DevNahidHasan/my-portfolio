@@ -2143,6 +2143,29 @@ a.hero-btn {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
+
+    &.input-error {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.05);
+
+      &:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+      }
+    }
+  }
+
+  .field-error-text {
+    font-size: 0.75rem;
+    color: #f87171;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+
+    svg {
+      flex-shrink: 0;
+    }
   }
 }
 

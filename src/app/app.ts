@@ -55,8 +55,44 @@ export class App implements OnInit, OnDestroy {
     email: '',
     message: ''
   };
+  fieldTouched = signal<{ name: boolean; email: boolean; message: boolean }>({
+    name: false,
+    email: false,
+    message: false
+  });
   formSubmitted = signal(false);
+  formSubmitting = signal(false);
   formError = signal(false);
+  formErrorMessage = signal('');
+  // Web3Forms Access Key (get your free key from https://web3forms.com)
+  web3formsAccessKey = 'f4067688-857f-44a9-9372-d26c9c711b44';
+
+  getNameError(): string {
+    const val = this.contactForm.name?.trim() || '';
+    if (!val) return 'Please enter your name.';
+    if (val.length < 2) return 'Name must be at least 2 characters.';
+    return '';
+  }
+
+  getEmailError(): string {
+    const val = this.contactForm.email?.trim() || '';
+    if (!val) return 'Please enter your email address.';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(val)) return 'Please enter a valid email (e.g. name@domain.com).';
+    return '';
+  }
+
+  getMessageError(): string {
+    const val = this.contactForm.message?.trim() || '';
+    if (!val) return 'Please write a message.';
+    if (val.length < 5) return 'Message must be at least 5 characters.';
+    return '';
+  }
+
+  touchField(field: 'name' | 'email' | 'message'): void {
+    this.fieldTouched.update(t => ({ ...t, [field]: true }));
+  }
+
 
   // ─── Nav Links ────────────────────────────────────────────
   navLinks = [
@@ -420,16 +456,55 @@ export class App implements OnInit, OnDestroy {
     this.observers.push(observer);
   }
 
-  // ─── Contact Form ─────────────────────────────────────────
-  submitForm(): void {
-    if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.message) {
-      this.formError.set(true);
-      setTimeout(() => this.formError.set(false), 3000);
+  // ─── Contact Form (Web3Forms) ─────────────────────────────
+  async submitForm(): Promise<void> {
+    // Mark all fields as touched to display errors
+    this.fieldTouched.set({ name: true, email: true, message: true });
+
+    if (this.getNameError() || this.getEmailError() || this.getMessageError()) {
       return;
     }
-    // Simulate form submission
-    this.formSubmitted.set(true);
-    this.contactForm = { name: '', email: '', message: '' };
-    setTimeout(() => this.formSubmitted.set(false), 5000);
+
+    if (!this.isBrowser) return;
+
+    this.formSubmitting.set(true);
+    this.formError.set(false);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: this.web3formsAccessKey,
+          name: this.contactForm.name,
+          email: this.contactForm.email,
+          message: this.contactForm.message,
+          from_name: 'Portfolio Contact Form',
+          subject: `New Portfolio Message from ${this.contactForm.name}`
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        this.formSubmitted.set(true);
+        this.contactForm = { name: '', email: '', message: '' };
+        this.fieldTouched.set({ name: false, email: false, message: false });
+        setTimeout(() => this.formSubmitted.set(false), 6000);
+      } else {
+        this.formErrorMessage.set(result.message || 'Failed to send message. Please try again.');
+        this.formError.set(true);
+        setTimeout(() => this.formError.set(false), 5000);
+      }
+    } catch (err) {
+      this.formErrorMessage.set('Network error. Please try again or email directly.');
+      this.formError.set(true);
+      setTimeout(() => this.formError.set(false), 5000);
+    } finally {
+      this.formSubmitting.set(false);
+    }
   }
 }
