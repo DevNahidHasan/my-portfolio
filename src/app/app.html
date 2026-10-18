@@ -257,27 +257,29 @@
     <div class="about-grid">
       <!-- Bio Column -->
       <div class="about-bio reveal reveal-delay-1">
-        <p>
-          I'm a passionate <span class="accent">Software Developer</span> with 2+ years of experience
-          crafting robust, scalable web applications. I thrive at the intersection of clean code
-          and great user experience.
-        </p>
-        <p>
-          My journey in software development started with curiosity and grew into a deep love
-          for problem-solving. I specialize in building full-stack applications using modern
-          technologies like <span class="accent">Angular</span>, <span class="accent">Node.js</span>,
-          and <span class="accent">PostgreSQL</span>.
-        </p>
-        <p>
-          When I'm not coding, I'm exploring new tech trends, contributing to open-source projects,
-          or sharpening my skills through competitive programming.
-        </p>
+          <p>
+            I'm a passionate <span class="accent">Computer Science student</span> and aspiring 
+            <span class="accent">Software Engineer</span>, actively working to specialize in 
+            building scalable backend systems, microservices, and modern web applications.
+          </p>
+          <p>
+            With a strong academic track record (<span class="accent">CGPA 3.91 / 4.00</span> 
+            at Daffodil International University), I am continuously deepening my hands-on skills in 
+            <span class="accent">Java</span>, <span class="accent">Spring Boot</span>, 
+            <span class="accent">Microservices</span>, and authentication with 
+            <span class="accent">Keycloak &amp; OAuth2</span>, while bridging the gap to the frontend with 
+            <span class="accent">Angular</span>.
+          </p>
+          <p>
+            Beyond architecture and web development, I love sharpening my problem-solving skills through competitive programming — 
+            having earned <span class="accent">Section Champion</span> honors in the <em>Take Off</em> programming contest and 
+            competing as a finalist in <em>Unlock the Algorithm</em>.
+          </p>
 
         <div class="about-tags reveal reveal-delay-2">
-          <span class="badge">🎯 Problem Solver</span>
           <span class="badge">🚀 Fast Learner</span>
           <span class="badge">🤝 Team Player</span>
-          <span class="badge">💡 Creative Thinker</span>
+          <span class="badge">🎯 Problem Solver</span>
         </div>
       </div>
 
@@ -290,9 +292,9 @@
             <h3>Education</h3>
           </div>
           <div class="edu-item">
-            <div class="edu-degree">B.Tech in Computer Science &amp; Engineering</div>
-            <div class="edu-school">Your University Name</div>
-            <div class="edu-period">2019 – 2023 · CGPA: 8.5/10</div>
+            <div class="edu-degree">B.Sc in Computer Science &amp; Engineering</div>
+            <div class="edu-school">Daffodil International University</div>
+            <div class="edu-period">CGPA: 3.91/4.00</div>
           </div>
         </div>
 
@@ -303,11 +305,9 @@
             <h3>Currently Focused On</h3>
           </div>
           <div class="focus-tags">
+            <span class="badge">Angular</span>
             <span class="badge">System Design</span>
-            <span class="badge">Cloud Architecture</span>
-            <span class="badge">Open Source</span>
-            <span class="badge">Angular 21</span>
-            <span class="badge">DevOps</span>
+            <span class="badge">Problem Solving</span>
           </div>
         </div>
 
@@ -315,23 +315,17 @@
       </div>
     </div>
 
-    <!-- At A Glance Card -->
+    <!--Tech Stack At A Glance Card -->
     <div class="card about-glance-card reveal reveal-delay-3">
       <div class="card-header-row">
         <span class="card-icon">⚡</span>
-        <h3>At A Glance</h3>
+        <h3>Tech Stack</h3>
       </div>
       <div class="glance-grid">
-        @for (item of atAGlance; track item.text) {
+        @for (item of atAGlance; track item.title) {
           <div class="glance-card">
             <div class="glance-icon">
               @switch (item.icon) {
-                @case ('education') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                  </svg>
-                }
                 @case ('coffee') {
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
@@ -341,18 +335,10 @@
                     <line x1="14" y1="1" x2="14" y2="4"/>
                   </svg>
                 }
-                @case ('react') {
+                @case ('spring') {
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="2.5"/>
-                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)"/>
-                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)"/>
-                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)"/>
-                  </svg>
-                }
-                @case ('code') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/>
-                    <path d="M16 3h1a2 2 0 0 1 2 2v5c0 1.1.9 2 2 2a2 2 0 0 1-2 2v5a2 2 0 0 1-2 2h-1"/>
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10Z"/>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
                   </svg>
                 }
                 @case ('database') {
@@ -370,15 +356,34 @@
                     <path d="M12 9V4s3.03.55 4 2c1.08 1.62 0 5 0 5"/>
                   </svg>
                 }
-                @case ('location') {
+                @case ('security') {
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                }
+                @case ('angular') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 5.5 3.5 18 12 22 20.5 18 22 5.5 12 2"/>
+                    <polyline points="7.5 16.5 12 6.5 16.5 16.5"/>
+                    <line x1="9.5" y1="12.5" x2="14.5" y2="12.5"/>
+                  </svg>
+                }
+                @case ('tools') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                }
+                @case ('code') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
                   </svg>
                 }
               }
             </div>
-            <div class="glance-text">{{ item.text }}</div>
+            <div class="glance-title">{{ item.title }}</div>
+            <div class="glance-desc">{{ item.desc }}</div>
           </div>
         }
       </div>

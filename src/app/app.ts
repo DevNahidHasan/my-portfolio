@@ -111,32 +111,44 @@ export class App implements OnInit, OnDestroy {
   // ─── At A Glance (About Section) ──────────────────────────
   atAGlance = [
     {
-      icon: 'education',
-      text: 'B.E. — Electronics & Communication Engineering'
-    },
-    {
       icon: 'coffee',
-      text: 'Java + Spring Boot'
+      title: 'Core Java',
+      desc: '> OOP · Collections Framework'
     },
     {
-      icon: 'react',
-      text: 'React + JavaScript'
-    },
-    {
-      icon: 'code',
-      text: 'REST APIs'
+      icon: 'spring',
+      title: 'Spring Ecosystem',
+      desc: '> Spring Boot · MVC · Security · Data JPA · REST APIs'
     },
     {
       icon: 'database',
-      text: 'MySQL · MongoDB · H2'
+      title: 'Databases',
+      desc: '> PostgreSQL · MySQL · H2'
     },
     {
       icon: 'rocket',
-      text: 'Full-Stack Development'
+      title: 'Architecture',
+      desc: '> Microservices · DDD · API Gateway · Service Discovery'
     },
     {
-      icon: 'location',
-      text: 'Mysore, India'
+      icon: 'security',
+      title: 'Security',
+      desc: '> Keycloak · OAuth2 · JWT'
+    },
+    {
+      icon: 'angular',
+      title: 'Frontend & UI',
+      desc: '> Angular · TypeScript · Thymeleaf · CSS'
+    },
+    {
+      icon: 'tools',
+      title: 'Tools & DevOps',
+      desc: '> Git · GitHub · Postman · Gradle'
+    },
+    {
+      icon: 'code',
+      title: 'Problem Solving',
+      desc: '> Data Structures · Algorithms'
     }
   ];
 
