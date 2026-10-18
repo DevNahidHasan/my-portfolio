@@ -1,4 +1,18 @@
 <!-- ============================================================
+     MULTI-COLOR AMBIENT MESH GLOW BACKGROUND
+     ============================================================ -->
+<div class="ambient-mesh-canvas" aria-hidden="true">
+  <div class="ambient-orb orb-cyan"></div>
+  <div class="ambient-orb orb-emerald"></div>
+  <div class="ambient-orb orb-amber"></div>
+  <div class="ambient-orb orb-violet"></div>
+  <div class="ambient-orb orb-amber-bottom"></div>
+  <div class="ambient-orb orb-center"></div>
+  <div class="ambient-grid-overlay"></div>
+  <div class="ambient-vignette"></div>
+</div>
+
+<!-- ============================================================
      NAVBAR
      ============================================================ -->
 <nav class="navbar" [class.scrolled]="isScrolled()">
@@ -244,6 +258,8 @@
   </div>
 </section>
 
+<div class="section-sep" aria-hidden="true"></div>
+
 <!-- ============================================================
      ABOUT SECTION
      ============================================================ -->
@@ -251,12 +267,26 @@
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">About Me</div>
-      <h2 class="section-title reveal reveal-delay-1">Who I <span>Am</span></h2>
+      <h2 class="section-title reveal reveal-delay-1">Who <span>Am I ?</span></h2>
     </div>
 
     <div class="about-grid">
-      <!-- Bio Column -->
-      <div class="about-bio reveal reveal-delay-1">
+      <!-- Bio Column (Bento Card) -->
+      <div class="bento-card bento-bio-card reveal reveal-delay-1">
+        <div class="bento-card-header">
+          <div class="bento-icon-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <span class="bento-card-label">Biography</span>
+          <div class="bento-role-badge">
+            <span class="role-sparkle">✦</span> Software Engineer
+          </div>
+        </div>
+
+        <div class="bento-bio-text">
           <p>
             I'm a passionate <span class="accent">Computer Science student</span> and aspiring 
             <span class="accent">Software Engineer</span>, actively working to specialize in 
@@ -272,54 +302,85 @@
           </p>
           <p>
             Beyond architecture and web development, I love sharpening my problem-solving skills through competitive programming — 
-            having earned <span class="accent">Section Champion</span> honors in the <em>Take Off</em> programming contest and 
-            competing as a finalist in <em>Unlock the Algorithm</em>.
+            having earned <span class="accent">Section Champion</span> honors in the <span class="accent">Take Off</span> programming contest and 
+            competing as a finalist in <span class="accent">Unlock the Algorithm</span>.
           </p>
+        </div>
 
-        <div class="about-tags reveal reveal-delay-2">
-          <span class="badge">🚀 Fast Learner</span>
-          <span class="badge">🤝 Team Player</span>
-          <span class="badge">🎯 Problem Solver</span>
+        <div class="bento-bio-tags">
+          <span class="bento-chip chip-amber"><span class="chip-dot"></span>🚀 Fast Learner</span>
+          <span class="bento-chip chip-emerald"><span class="chip-dot"></span>🤝 Team Player</span>
+          <span class="bento-chip chip-cyan"><span class="chip-dot"></span>🎯 Problem Solver</span>
         </div>
       </div>
 
       <!-- Info Cards Column -->
       <div class="about-cards">
-        <!-- Education Card -->
-        <div class="card about-edu-card reveal reveal-delay-2">
-          <div class="card-header-row">
-            <span class="card-icon">🎓</span>
-            <h3>Education</h3>
+        <!-- Education Card (Bento Style) -->
+        <div class="bento-card bento-edu-card reveal reveal-delay-2">
+          <div class="bento-card-header">
+            <div class="bento-icon-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <span class="bento-card-label">Education</span>
+            <div class="bento-gpa-badge">
+              <span class="gpa-star">★</span> CGPA 3.91 / 4.00
+            </div>
           </div>
-          <div class="edu-item">
-            <div class="edu-degree">B.Sc in Computer Science &amp; Engineering</div>
-            <div class="edu-school">Daffodil International University</div>
-            <div class="edu-period">CGPA: 3.91/4.00</div>
+          <div class="bento-edu-body">
+            <h4 class="bento-edu-degree">B.Sc in Computer Science &amp; Engineering</h4>
+            <div class="bento-edu-school">
+              <svg class="school-pin-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Daffodil International University</span>
+            </div>
+            <div class="bento-edu-footer">
+              <span class="edu-status-pill">
+                <span class="status-indicator"></span> Undergraduate Student
+              </span>
+              <span class="edu-major-pill">Dept. of CSE</span>
+            </div>
           </div>
         </div>
 
-        <!-- Currently Focused -->
-        <div class="card about-focus-card reveal reveal-delay-3">
-          <div class="card-header-row">
-            <span class="card-icon">🔍</span>
-            <h3>Currently Focused On</h3>
+        <!-- Currently Focused Card (Bento Style) -->
+        <div class="bento-card bento-focus-card reveal reveal-delay-3">
+          <div class="bento-card-header">
+            <div class="bento-icon-badge">
+              <span class="radar-dot"></span>
+            </div>
+            <span class="bento-card-label">Current Focus On</span>
+            <div class="bento-active-badge">
+              <span class="active-pulse-dot"></span> Actively Learning
+            </div>
           </div>
-          <div class="focus-tags">
-            <span class="badge">Angular</span>
-            <span class="badge">System Design</span>
-            <span class="badge">Problem Solving</span>
+          <div class="bento-focus-body">
+            <div class="bento-focus-chips">
+              <span class="bento-chip"><span class="chip-dot"></span>Angular</span>
+              <span class="bento-chip"><span class="chip-dot"></span>System Design</span>
+              <span class="bento-chip"><span class="chip-dot"></span>Problem Solving</span>
+              <span class="bento-chip"><span class="chip-dot"></span>Microservices</span>
+            </div>
           </div>
         </div>
-
-
       </div>
     </div>
 
-    <!--Tech Stack At A Glance Card -->
-    <div class="card about-glance-card reveal reveal-delay-3">
-      <div class="card-header-row">
-        <span class="card-icon">⚡</span>
-        <h3>Tech Stack</h3>
+    <!-- Tech Stack Dashboard (Bento Style) -->
+    <div class="bento-card bento-tech-card reveal reveal-delay-3">
+      <div class="bento-card-header">
+        <div class="bento-icon-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <span class="bento-card-label">Tech Stack</span>
+        <span class="bento-tech-count">8 Core Domains</span>
       </div>
       <div class="glance-grid">
         @for (item of atAGlance; track item.title) {
@@ -434,43 +495,60 @@
 <!-- ============================================================
      PROJECTS SECTION
      ============================================================ -->
+<div class="section-sep" aria-hidden="true"></div>
+
 <section id="projects" class="section projects-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag reveal">Portfolio</div>
-      <h2 class="section-title reveal reveal-delay-1">Featured <span>Projects</span></h2>
+      <div class="section-tag reveal">PROJECTS</div>
+      <h2 class="section-title reveal reveal-delay-1"><span>Projects</span> I've Built</h2>
+      <p class="section-subtitle reveal reveal-delay-2">Things I've built — from backend microservices to full-stack applications.</p>
     </div>
 
-    <!-- Featured Project Card (StaffHub) -->
+    <!-- Featured Project Card -->
     @if (featuredProject; as feat) {
-      <div class="featured-project-card card reveal reveal-delay-2">
-        <div class="featured-preview">
-          <div class="featured-window-header">
+      <div class="bento-card proj-featured-card reveal reveal-delay-2">
+
+        <!-- Left: Browser Frame Preview -->
+        <div class="proj-browser-frame">
+          <div class="proj-browser-bar">
             <div class="window-dots">
               <span class="dot dot-red"></span>
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <span class="featured-badge">FEATURED PROJECT</span>
+            <div class="proj-url-bar">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>{{ feat.title.toLowerCase().replace(' ', '-') }}.app</span>
+            </div>
+            <div class="proj-featured-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Featured
+            </div>
           </div>
-          <div class="featured-img-wrap" (click)="openProjectModal(feat)">
+          <div class="proj-img-wrap" (click)="openProjectModal(feat)">
             <img [src]="feat.image" [alt]="feat.title" class="project-img" />
             <div class="preview-overlay">
-              <span>Click to view details</span>
+              <span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                View Details
+              </span>
             </div>
           </div>
         </div>
 
-        <div class="featured-info">
+        <!-- Right: Info Panel -->
+        <div class="proj-info-panel">
           @if (feat.status) {
             <div class="project-status-pill">
               <span class="status-pulse-dot"></span>
               {{ feat.status }}
             </div>
           }
-          <h3 class="featured-title">{{ feat.title }}</h3>
-          <div class="featured-subtitle">{{ feat.subtitle }}</div>
-          <p class="featured-desc">{{ feat.description }}</p>
+          <h3 class="proj-title">{{ feat.title }}</h3>
+          <div class="proj-subtitle">{{ feat.subtitle }}</div>
+          <div class="proj-divider-line" aria-hidden="true"></div>
+          <p class="proj-desc">{{ feat.description }}</p>
 
           <div class="project-tags-list">
             @for (tag of feat.tags; track tag) {
@@ -478,19 +556,20 @@
             }
           </div>
 
-          <div class="project-action-bar">
+          <div class="proj-action-row">
             @if (feat.liveUrl) {
-              <a [href]="feat.liveUrl" target="_blank" rel="noopener" class="action-link-live">
+              <a [href]="feat.liveUrl" target="_blank" rel="noopener" class="proj-btn-live">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live Demo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
             }
-            <a [href]="feat.githubUrl" target="_blank" rel="noopener" class="action-link-github">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <a [href]="feat.githubUrl" target="_blank" rel="noopener" class="proj-btn-ghost">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
-            <button type="button" class="action-btn-details" (click)="openProjectModal(feat)">
-              View Details &rarr;
+            <button type="button" class="proj-btn-details" (click)="openProjectModal(feat)">
+              Details
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
             </button>
           </div>
         </div>
@@ -500,64 +579,109 @@
     <!-- 2-Column Projects Grid -->
     <div class="projects-subgrid">
       @for (proj of regularProjects; track proj.title) {
-        <div class="project-mini-card card reveal reveal-delay-2">
-          <div class="project-mini-preview" (click)="openProjectModal(proj)">
-            <div class="mini-window-bar">
+        <div class="bento-card proj-mini-card proj-theme-{{ proj.theme }} reveal reveal-delay-2">
+          <!-- Browser frame preview -->
+          <div class="proj-browser-frame" (click)="openProjectModal(proj)">
+            <div class="proj-browser-bar">
               <div class="window-dots">
                 <span class="dot dot-red"></span>
                 <span class="dot dot-yellow"></span>
                 <span class="dot dot-green"></span>
               </div>
+              <div class="proj-url-bar compact">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>{{ proj.title.toLowerCase().split(' ')[0] }}.app</span>
+              </div>
+              @if (proj.categoryBadge) {
+                <span class="proj-cat-badge">{{ proj.categoryBadge }}</span>
+              }
             </div>
-            <div class="mini-img-wrap">
+            <div class="proj-img-wrap">
               <img [src]="proj.image" [alt]="proj.title" class="project-img" />
               <div class="preview-overlay">
-                <span>Click to view details</span>
+                <span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  View Details
+                </span>
               </div>
             </div>
           </div>
 
-          <div class="project-mini-body">
-            <h3 class="mini-title">{{ proj.title }}</h3>
-            <div class="mini-subtitle">{{ proj.subtitle }}</div>
-            <p class="mini-desc">{{ proj.description }}</p>
-
+          <!-- Card body -->
+          <div class="proj-mini-body">
+            <h3 class="proj-mini-title">{{ proj.title }}</h3>
+            <div class="proj-mini-subtitle">{{ proj.subtitle }}</div>
+            <div class="proj-divider-line" aria-hidden="true"></div>
+            <p class="proj-mini-desc">{{ proj.description }}</p>
             <div class="project-tags-list">
-              @for (tag of proj.tags; track tag) {
+              @for (tag of proj.tags.slice(0, 5); track tag) {
                 <span class="project-pill-tag">{{ tag }}</span>
               }
             </div>
-
-            <div class="project-action-bar">
+            <div class="proj-action-row">
               @if (proj.liveUrl) {
-                <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="action-link-live">
+                <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="proj-btn-live small">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                   Live Demo
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
               }
-              <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="action-link-github">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="proj-btn-ghost small">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
-              <button type="button" class="action-btn-details" (click)="openProjectModal(proj)">
-                View Details &rarr;
+              <button type="button" class="proj-btn-details small" (click)="openProjectModal(proj)">
+                Details
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
               </button>
             </div>
           </div>
         </div>
       }
 
-      <!-- More on GitHub Card (Image 2 bottom right) -->
-      <div class="more-github-card card reveal reveal-delay-3">
-        <div class="more-github-icon-box">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      <!-- More on GitHub Special Developer Bento Card -->
+      <div class="bento-card proj-github-card reveal reveal-delay-3">
+        <div class="proj-github-glow" aria-hidden="true"></div>
+        <div class="proj-github-watermark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
         </div>
-        <h3 class="more-github-title">More on GitHub</h3>
-        <p class="more-github-desc">Source code, issues and development history &mdash;</p>
-        <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="more-github-link">
-          github.com/DevNahidHasan
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
+
+        <div class="proj-github-top">
+          <div class="proj-github-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </div>
+          <div class="proj-github-badge">
+            <span class="github-pulse-dot"></span>
+            <span>Public Repositories</span>
+          </div>
+        </div>
+
+        <div class="proj-github-content">
+          <div class="proj-github-label">✦ Open Source &amp; Research</div>
+          <h3 class="proj-github-title">More on GitHub</h3>
+          <p class="proj-github-desc">
+            Explore my algorithmic contest solutions, system design blueprints, backend microservices prototypes, and open-source contributions.
+          </p>
+
+          <div class="proj-github-tags">
+            <span class="github-chip">⚡ Clean Architecture</span>
+            <span class="github-chip">🔒 OAuth2 / Security</span>
+            <span class="github-chip">🧩 Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="proj-github-footer">
+          <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="proj-github-cta-btn">
+            <span>Explore @DevNahidHasan on GitHub</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -569,86 +693,121 @@
 @if (selectedProject(); as proj) {
   <div class="project-modal-backdrop" (click)="closeProjectModal()">
     <div class="project-modal-dialog" (click)="$event.stopPropagation()">
-      <!-- Modal Browser Frame Header -->
-      <div class="modal-browser-frame">
+      <!-- 1. Fixed Header with Window Controls, Title & Dev URL -->
+      <div class="modal-fixed-header">
         <div class="modal-window-bar">
-          <div class="window-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
+          <div class="modal-header-left">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="modal-header-titles">
+              <span class="modal-header-title">{{ proj.title }}</span>
+              <span class="modal-header-subtitle">{{ proj.subtitle }}</span>
+            </div>
           </div>
-          <div class="modal-url-bar">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span>{{ proj.title.toLowerCase().replace(' ', '') }}.dev</span>
+          <div class="modal-header-right">
+            <div class="modal-url-bar">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>{{ proj.title.toLowerCase().replace(' ', '') }}.dev</span>
+            </div>
+            <button type="button" class="modal-close-btn" (click)="closeProjectModal()" aria-label="Close modal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
           </div>
-          <button type="button" class="modal-close-btn" (click)="closeProjectModal()" aria-label="Close modal">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-        </div>
-        <div class="modal-img-wrap">
-          <img [src]="proj.image" [alt]="proj.title" class="modal-preview-img" />
         </div>
       </div>
 
-      <!-- Modal Body -->
-      <div class="modal-body-content">
-        <div class="modal-header-info">
-          <h2 class="modal-title">{{ proj.title }}</h2>
-          <div class="modal-subtitle">{{ proj.subtitle }}</div>
-        </div>
-
-        <!-- 2 Column: Problem & What I Built -->
-        <div class="modal-two-columns">
-          <div class="modal-col">
-            <div class="modal-col-heading">PROBLEM / PURPOSE</div>
-            <p class="modal-col-text">{{ proj.modalDetails.problem }}</p>
-          </div>
-          <div class="modal-col">
-            <div class="modal-col-heading">WHAT I BUILT</div>
-            <p class="modal-col-text">{{ proj.modalDetails.whatIBuilt }}</p>
+      <!-- 2. Contained Scroll Body (Only this area scrolls) -->
+      <div class="modal-scroll-body">
+        <div class="modal-img-wrap" (click)="openImageFullscreen(proj.image)" role="button" aria-label="View full image" tabindex="0">
+          <img [src]="proj.image" [alt]="proj.title" class="modal-preview-img" />
+          <div class="modal-img-expand-hint">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+              <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+            <span>Full View</span>
           </div>
         </div>
 
-        <!-- Key Features -->
-        <div class="modal-section-block">
-          <div class="modal-col-heading">KEY FEATURES</div>
-          <div class="modal-features-grid">
-            @for (feature of proj.modalDetails.keyFeatures; track feature) {
-              <div class="feature-item">
-                <svg class="feature-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>{{ feature }}</span>
-              </div>
-            }
+        <div class="modal-body-content">
+          <div class="modal-header-info">
+            <h2 class="modal-title">{{ proj.title }}</h2>
+            <div class="modal-subtitle">{{ proj.subtitle }}</div>
+          </div>
+
+          <!-- 2 Column: Problem & What I Built -->
+          <div class="modal-two-columns">
+            <div class="modal-col">
+              <div class="modal-col-heading">PROBLEM / PURPOSE</div>
+              <p class="modal-col-text">{{ proj.modalDetails.problem }}</p>
+            </div>
+            <div class="modal-col">
+              <div class="modal-col-heading">WHAT I BUILT</div>
+              <p class="modal-col-text">{{ proj.modalDetails.whatIBuilt }}</p>
+            </div>
+          </div>
+
+          <!-- Key Features -->
+          <div class="modal-section-block">
+            <div class="modal-col-heading">KEY FEATURES</div>
+            <div class="modal-features-grid">
+              @for (feature of proj.modalDetails.keyFeatures; track feature) {
+                <div class="feature-item">
+                  <svg class="feature-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>{{ feature }}</span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div class="modal-section-block">
+            <div class="modal-col-heading">TECHNOLOGIES</div>
+            <div class="modal-tech-pills">
+              @for (tech of proj.tags; track tech) {
+                <span class="modal-tech-pill">{{ tech }}</span>
+              }
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Technologies -->
-        <div class="modal-section-block">
-          <div class="modal-col-heading">TECHNOLOGIES</div>
-          <div class="modal-tech-pills">
-            @for (tech of proj.tags; track tech) {
-              <span class="modal-tech-pill">{{ tech }}</span>
-            }
-          </div>
-        </div>
-
-        <!-- Bottom Action Buttons -->
-        <div class="modal-footer-bar">
-          <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="modal-btn-github">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub Repository
+      <!-- 3. Pinned Footer Bar (Always visible immediately) -->
+      <div class="modal-footer-bar">
+        <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="modal-btn-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        @if (proj.liveUrl) {
+          <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="modal-btn-live">
+            Live Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
-          @if (proj.liveUrl) {
-            <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="modal-btn-live">
-              Live Demo
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          }
-        </div>
+        }
       </div>
     </div>
   </div>
 }
+
+<!-- ============================================================
+     IMAGE FULLSCREEN LIGHTBOX
+     ============================================================ -->
+@if (imageFullscreen()) {
+  <div class="img-lightbox-backdrop" (click)="closeImageFullscreen()" role="dialog" aria-label="Full image view" aria-modal="true">
+    <button class="img-lightbox-close" (click)="closeImageFullscreen()" aria-label="Close fullscreen image">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="img-lightbox-inner" (click)="$event.stopPropagation()">
+      <img [src]="imageFullscreen()" alt="Full screenshot" class="img-lightbox-img" />
+    </div>
+    <p class="img-lightbox-hint">Click outside or press Esc to close</p>
+  </div>
+}
+
+<div class="section-sep" aria-hidden="true"></div>
 
 <!-- ============================================================
      SKILLS SECTION
@@ -656,16 +815,16 @@
 <section id="skills" class="section skills-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag reveal">Tech Stack</div>
+      <div class="section-tag reveal">Tech Skills</div>
       <h2 class="section-title reveal reveal-delay-1">Skills &amp; <span>Technologies</span></h2>
     </div>
 
     <div class="skills-grid">
       @for (group of skillGroups; track group.category) {
-        <div class="skill-group card reveal reveal-delay-2">
+        <div class="skill-group bento-card skill-group-{{ group.theme }} reveal reveal-delay-2">
           <div class="skill-group-header">
-            <span class="skill-icon">{{ group.icon }}</span>
-            <h3>{{ group.category }}</h3>
+            <span class="skill-icon-badge">{{ group.icon }}</span>
+            <h3 class="skill-group-title">{{ group.category }}</h3>
           </div>
           <div class="skill-pills">
             @for (skill of group.skills; track skill) {
@@ -679,32 +838,163 @@
 </section>
 
 <!-- ============================================================
-     CERTIFICATIONS SECTION
+     CERTIFICATIONS SECTION (COMMENTED OUT)
      ============================================================ -->
+<!--
 <section id="certifications" class="section certs-section">
-  <div class="container">
+  <div class="certs-ambient-glow certs-glow-amber" aria-hidden="true"></div>
+  <div class="certs-ambient-glow certs-glow-emerald" aria-hidden="true"></div>
+  <div class="certs-ambient-glow certs-glow-cyan" aria-hidden="true"></div>
+  <div class="certs-ambient-glow certs-glow-crimson" aria-hidden="true"></div>
+  <div class="certs-ambient-glow certs-glow-purple" aria-hidden="true"></div>
+
+  <div class="container relative-z">
     <div class="section-header">
-      <div class="section-tag reveal">Achievements</div>
-      <h2 class="section-title reveal reveal-delay-1">My <span>Certifications</span></h2>
+      <div class="section-tag reveal">Achievements &amp; Credentials</div>
+      <h2 class="section-title reveal reveal-delay-1">Honors &amp; <span>Certifications</span></h2>
+      <p class="section-subtitle reveal reveal-delay-2">
+        Verified assessments, competitive programming championships, and specialized technical qualifications.
+      </p>
     </div>
 
+    /* Spotlight Championship Award */
+    <div class="bento-card cert-spotlight-card reveal reveal-delay-2">
+      <div class="cert-spotlight-inner">
+        <div class="cert-spotlight-info">
+          <div class="cert-spotlight-top">
+            <span class="cert-badge-pill gold-glow">
+              <span class="pulse-dot-gold"></span>
+              {{ championAward.rank }}
+            </span>
+            <span class="cert-tag-pill">{{ championAward.category }}</span>
+          </div>
+
+          <h3 class="cert-spotlight-title">
+            <span class="trophy-emoji">🏆</span>
+            {{ championAward.title }}
+          </h3>
+
+          <div class="cert-issuer-meta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span>{{ championAward.issuer }}</span>
+            <span class="meta-separator">•</span>
+            <span class="cert-meta-date">{{ championAward.date }}</span>
+          </div>
+
+          <p class="cert-spotlight-desc">{{ championAward.description }}</p>
+
+          <div class="cert-spotlight-skills">
+            @for (skill of championAward.skills; track skill) {
+              <span class="project-pill-tag">{{ skill }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="cert-spotlight-visual">
+          <div class="cert-trophy-display">
+            <div class="trophy-glow-ring"></div>
+            <div class="trophy-glow-ring secondary"></div>
+            <div class="trophy-center-badge">
+              <span class="trophy-big-icon">🏆</span>
+              <span class="trophy-year">{{ championAward.date }}</span>
+            </div>
+            <div class="cert-credential-code">
+              <span class="code-label">CREDENTIAL REF</span>
+              <code>{{ championAward.credentialId }}</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    /* 2-Column Certifications Grid */
     <div class="certs-grid">
       @for (cert of certifications; track cert.title) {
-        <a [href]="cert.url" target="_blank" rel="noopener" class="cert-card card reveal reveal-delay-2">
-          <div class="cert-badge">{{ cert.badge }}</div>
-          <div class="cert-body">
-            <div class="cert-issuer">{{ cert.issuer }}</div>
-            <h3 class="cert-title">{{ cert.title }}</h3>
-            <div class="cert-date">Issued {{ cert.date }}</div>
+        <div class="bento-card cert-card-modern reveal reveal-delay-2" [attr.data-card-type]="cert.iconType">
+          /* Card Header */
+          <div class="cert-card-header">
+            <div class="cert-brand-group">
+              <div class="cert-icon-wrapper" [attr.data-type]="cert.iconType">
+                @if (cert.iconType === 'angular') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <polygon points="12 2 2 5.5 3.5 17.5 12 22 20.5 17.5 22 5.5" stroke="#dd0031" stroke-width="2" fill="rgba(221, 0, 49, 0.12)"/>
+                    <path d="M12 6L7 17h2.2l1-2.5h3.6l1 2.5h2.2L12 6zm-1 6.5l1-2.8 1 2.8h-2z" fill="#dd0031"/>
+                  </svg>
+                } @else if (cert.iconType === 'problem-solving') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><circle cx="12" cy="12" r="2" fill="#10b981"/>
+                  </svg>
+                } @else if (cert.iconType === 'javascript') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#eab308" stroke-width="2" fill="rgba(234, 179, 8, 0.12)"/>
+                    <path d="M9 16.5c0 .8-.5 1.5-1.5 1.5-1.2 0-1.5-1-1.5-1.5M14 18c.8 0 1.5-.4 1.8-.8.2-.2.2-.6.2-1 0-.9-.6-1.3-1.4-1.6l-.6-.2c-.7-.3-1-.6-1-1 0-.5.4-.9 1-.9.7 0 1.1.4 1.2.9" stroke="#eab308" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                } @else {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                  </svg>
+                }
+              </div>
+              <div class="cert-meta-texts">
+                <span class="cert-issuer-title">{{ cert.issuer }}</span>
+                <span class="cert-category-label">{{ cert.category }}</span>
+              </div>
+            </div>
+
+            <span class="cert-status-badge verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Verified
+            </span>
           </div>
-          <div class="cert-arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+
+          /* Card Body */
+          <div class="cert-card-body">
+            <h3 class="cert-card-title">{{ cert.title }}</h3>
+            <p class="cert-card-desc">{{ cert.description }}</p>
+
+            <div class="cert-tags-row">
+              @for (skill of cert.skills; track skill) {
+                <span class="project-pill-tag">{{ skill }}</span>
+              }
+            </div>
           </div>
-        </a>
+
+          /* Card Footer (Action & Verification Row) */
+          <div class="cert-card-footer">
+            <div class="cert-date-code">
+              <div class="cert-issued-date">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <span>Issued {{ cert.date }}</span>
+              </div>
+              <span class="cert-code-id">{{ cert.credentialId }}</span>
+            </div>
+
+            <a [href]="cert.url" target="_blank" rel="noopener" class="cert-action-btn" aria-label="Verify credential on HackerRank">
+              <span>Verify</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       }
     </div>
   </div>
 </section>
+-->
+
+<div class="section-sep" aria-hidden="true"></div>
 
 <!-- ============================================================
      CONTACT SECTION
@@ -712,121 +1002,301 @@
 <section id="contact" class="section contact-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag reveal">Get In Touch</div>
+      <div class="section-tag reveal">Contact Me</div>
       <h2 class="section-title reveal reveal-delay-1">Let's <span>Connect</span></h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Have a project in mind or just want to chat? I'm always open to new opportunities and collaborations.
+        Have a project in mind, an exciting role, or just want to chat tech? Feel free to reach out anytime.
       </p>
     </div>
 
     <div class="contact-grid">
-      <!-- Contact Info -->
+      <!-- Contact Info Bento Card -->
       <div class="contact-info reveal reveal-delay-2">
-        <div class="contact-info-card card">
-          <h3>Contact Details</h3>
+        <div class="bento-card contact-info-card">
+          <!-- Bento Header -->
+          <div class="bento-card-header">
+            <div class="bento-icon-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <span class="bento-card-label">Direct Channels</span>
+            <div class="bento-active-badge">
+              <span class="pulse-dot"></span>
+              <span>Available for Hire</span>
+            </div>
+          </div>
+
+          <p class="contact-card-desc">
+            I'm currently open to full-time Software Engineer (Junior/Trainee) roles, Backend opportunities, and tech collaborations.
+          </p>
+
+          <!-- Contact items list -->
           <div class="contact-items">
+            <!-- Email -->
             <a href="mailto:smnahid.hsn@gmail.com" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
               </div>
-              <div>
-                <div class="contact-label">Email</div>
+              <div class="contact-details">
+                <div class="contact-label">DIRECT EMAIL</div>
                 <div class="contact-value">smnahid.hsn@gmail.com</div>
               </div>
+              <div class="contact-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </div>
             </a>
+
+            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
               </div>
-              <div>
-                <div class="contact-label">LinkedIn</div>
+              <div class="contact-details">
+                <div class="contact-label">LINKEDIN</div>
                 <div class="contact-value">linkedin.com/in/DevNahidHasan</div>
               </div>
+              <div class="contact-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </div>
             </a>
+
+            <!-- GitHub (Commented Out)
+            <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">GITHUB</div>
+                <div class="contact-value">github.com/DevNahidHasan</div>
+              </div>
+              <div class="contact-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </div>
+            </a>
+            -->
+
+            <!-- Location -->
+            <div class="contact-item static-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">LOCATION</div>
+                <div class="contact-value">Dhaka, Bangladesh <span class="timezone-pill">UTC+6</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Preference card -->
+          <div class="contact-focus-box">
+            <div class="focus-title">
+              <span class="focus-dot">✦</span> Preferred Roles & Work Mode
+            </div>
+            <div class="focus-tags">
+              <span class="bento-chip">Backend Engineer</span>
+              <span class="bento-chip">Software Engineer (Trainee/Jr)</span>
+              <span class="bento-chip">Java & Spring Boot</span>
+              <span class="bento-chip">On-Site / Hybrid / Remote</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Contact Form -->
+      <!-- Contact Form Bento Card -->
       <div class="contact-form-wrap reveal reveal-delay-3">
-        <div class="card">
+        <div class="bento-card contact-form-card">
+          <!-- Bento Header -->
+          <div class="bento-card-header">
+            <div class="bento-icon-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </div>
+            <span class="bento-card-label">Send a Message</span>
+            <div class="bento-role-badge">
+              <span class="role-sparkle">⚡</span>
+              <span>Fast Response</span>
+            </div>
+          </div>
+
           @if (formSubmitted()) {
             <div class="form-success">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="16,8 10,14 7,11"/></svg>
-              <h3>Message Sent!</h3>
-              <p>Thanks for reaching out. I'll get back to you soon.</p>
+              <canvas class="party-popper-canvas" #popperCanvas></canvas>
+              <div class="success-shockwave shockwave-1"></div>
+              <div class="success-shockwave shockwave-2"></div>
+
+              <div class="form-success-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+
+              <div class="success-badge-tag">
+                <span>🎉 Message Sent!</span>
+              </div>
+
+              <h3 class="success-title">Message Sent Successfully!</h3>
+              <p class="success-desc">Thank you for reaching out. I've received your note and will get back to you shortly.</p>
+
+              <button type="button" class="form-reset-btn" (click)="resetForm()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                <span>Send Another Message</span>
+              </button>
             </div>
           } @else {
             <form class="contact-form" (ngSubmit)="submitForm()">
-              <h3>Send a Message</h3>
               @if (formError()) {
-                <div class="form-error-msg">{{ formErrorMessage() }}</div>
+                <div class="form-error-msg">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <span>{{ formErrorMessage() }}</span>
+                </div>
               }
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  [(ngModel)]="contactForm.name"
-                  name="name"
-                  placeholder="John Doe"
-                  autocomplete="name"
-                  (blur)="touchField('name')"
-                  (input)="touchField('name')"
-                  [class.input-error]="fieldTouched().name && getNameError()"
-                  [disabled]="formSubmitting()">
-                @if (fieldTouched().name && getNameError()) {
-                  <span class="field-error-text">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    {{ getNameError() }}
-                  </span>
-                }
+
+              <div class="form-row-two">
+                <div class="form-group">
+                  <label for="name">
+                    <span>Your Name</span>
+                    <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrap">
+                    <input
+                      id="name"
+                      type="text"
+                      [(ngModel)]="contactForm.name"
+                      name="name"
+                      placeholder="e.g. Alex Rahman"
+                      autocomplete="name"
+                      (blur)="touchField('name')"
+                      (input)="touchField('name')"
+                      [class.input-error]="fieldTouched().name && getNameError()"
+                      [disabled]="formSubmitting()">
+                  </div>
+                  <div class="field-error-slot">
+                    @if (fieldTouched().name && getNameError()) {
+                      <span class="field-error-text">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        {{ getNameError() }}
+                      </span>
+                    }
+                  </div>
+                </div>
+
+                <!-- Optional Company field -->
+                <div class="form-group">
+                  <label for="company">
+                    <span>Company / Organization</span>
+                    <span class="optional-tag">optional</span>
+                  </label>
+                  <div class="input-wrap">
+                    <input
+                      id="company"
+                      type="text"
+                      [(ngModel)]="contactForm.company"
+                      name="company"
+                      placeholder="e.g. Google, Startup X, Freelance…"
+                      autocomplete="organization"
+                      [disabled]="formSubmitting()">
+                  </div>
+                  <div class="field-error-slot" aria-hidden="true"></div>
+                </div>
               </div>
+
+              <!-- Email field (full width below Name & Company) -->
               <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                  id="email"
-                  type="email"
-                  [(ngModel)]="contactForm.email"
-                  name="email"
-                  placeholder="john@example.com"
-                  autocomplete="email"
-                  (blur)="touchField('email')"
-                  (input)="touchField('email')"
-                  [class.input-error]="fieldTouched().email && getEmailError()"
-                  [disabled]="formSubmitting()">
-                @if (fieldTouched().email && getEmailError()) {
-                  <span class="field-error-text">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    {{ getEmailError() }}
-                  </span>
-                }
+                <label for="email">
+                  <span>Email Address</span>
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-wrap">
+                  <input
+                    id="email"
+                    type="email"
+                    [(ngModel)]="contactForm.email"
+                    name="email"
+                    placeholder="e.g. alex@company.com"
+                    autocomplete="email"
+                    (blur)="touchField('email')"
+                    (input)="touchField('email')"
+                    [class.input-error]="fieldTouched().email && getEmailError()"
+                    [disabled]="formSubmitting()">
+                </div>
+                <div class="field-error-slot">
+                  @if (fieldTouched().email && getEmailError()) {
+                    <span class="field-error-text">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                      {{ getEmailError() }}
+                    </span>
+                  }
+                </div>
               </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  [(ngModel)]="contactForm.message"
-                  name="message"
-                  rows="5"
-                  placeholder="Write your message here..."
-                  (blur)="touchField('message')"
-                  (input)="touchField('message')"
-                  [class.input-error]="fieldTouched().message && getMessageError()"
-                  [disabled]="formSubmitting()"></textarea>
-                @if (fieldTouched().message && getMessageError()) {
-                  <span class="field-error-text">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    {{ getMessageError() }}
-                  </span>
-                }
+
+              <div class="form-group form-group-message">
+                <label for="message">
+                  <span>Your Message</span>
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-wrap input-wrap-textarea">
+                  <textarea
+                    id="message"
+                    [(ngModel)]="contactForm.message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell me about your team, project, or an opportunity..."
+                    (blur)="touchField('message')"
+                    (input)="touchField('message')"
+                    [class.input-error]="fieldTouched().message && getMessageError()"
+                    [disabled]="formSubmitting()"></textarea>
+                </div>
+                <div class="field-error-slot">
+                  @if (fieldTouched().message && getMessageError()) {
+                    <span class="field-error-text">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                      {{ getMessageError() }}
+                    </span>
+                  }
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" [disabled]="formSubmitting()">
+
+              <button type="submit" class="contact-submit-btn" [disabled]="formSubmitting()">
                 @if (formSubmitting()) {
-                  <span>Sending...</span>
+                  <span class="btn-spinner"></span>
+                  <span>Sending Message...</span>
                 } @else {
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
                   <span>Send Message</span>
+                  <span class="btn-sparkle">✦</span>
                 }
               </button>
             </form>
@@ -842,17 +1312,42 @@
      ============================================================ -->
 <footer class="footer">
   <div class="container footer-inner">
+
+    <!-- Left: Logo -->
     <div class="footer-logo">
       <span class="logo-bracket">&lt;</span>
-      <span class="logo-name"> S M Nahid Hasan </span>
+      <span class="logo-name">NH</span>
       <span class="logo-bracket">&gt;</span>
     </div>
-    <p class="footer-text">
-      Designed &amp; Built by <span class="accent">S M Nahid Hasan</span> · {{ currentYear }}
-    </p>
-    <div class="footer-links">
-      <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-      <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+
+    <!-- Center: Credit + Built-with tag -->
+    <div class="footer-center">
+      <p class="footer-text">
+        Designed &amp; Built by <span class="accent">S M Nahid Hasan</span> · {{ currentYear }}
+      </p>
+      <div class="footer-built-tag">
+        <span class="built-dot"></span>
+        Built with Angular · TypeScript · SCSS
+      </div>
     </div>
+
+    <!-- Right: Social Links -->
+    <div class="footer-links">
+      <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <span class="footer-link-sep"></span>
+      <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <span class="footer-link-sep"></span>
+      <a href="mailto:smnahid.hsn@gmail.com" aria-label="Email">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+
   </div>
 </footer>

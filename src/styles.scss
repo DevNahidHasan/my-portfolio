@@ -2,14 +2,17 @@
    GLOBAL STYLES & DESIGN TOKENS
    ============================================ */
 :root {
-  --bg-primary: #020c06;
-  --bg-secondary: #071a0e;
+  --bg-primary: #030806;
+  --bg-secondary: #071510;
   --bg-card: #0a2014;
   --bg-card-hover: #0d2918;
   --accent: #10b981;
   --accent-dim: #059669;
   --accent-glow: rgba(16, 185, 129, 0.15);
   --accent-glow-strong: rgba(16, 185, 129, 0.3);
+  --accent-cyan: #38bdf8;
+  --accent-amber: #f59e0b;
+  --accent-purple: #818cf8;
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -33,6 +36,13 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden !important;
+  height: 100% !important;
 }
 
 body {
@@ -41,11 +51,14 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  background-image:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
-    linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px;
+  min-height: 100vh;
+}
+
+app-root {
+  display: block;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
 }
 
 a {
@@ -63,8 +76,12 @@ img { max-width: 100%; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-dim);
+  background: linear-gradient(180deg, #10b981 0%, #38bdf8 60%, #818cf8 100%);
   border-radius: 3px;
+  transition: opacity 0.2s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.85;
 }
 
 /* ============================================
@@ -78,43 +95,189 @@ img { max-width: 100%; }
 
 .section {
   padding: 96px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Separator Lines — explicit divs between sections ── */
+.section-sep {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(16, 185, 129, 0.25) 20%,
+      rgba(56, 189, 248, 0.2) 50%,
+      rgba(129, 140, 248, 0.18) 80%,
+      transparent 100%
+    );
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.08);
+  }
 }
 
 .section-header {
   margin-bottom: 56px;
   text-align: center;
+  position: relative;
+  padding: 16px 0 10px;
+
+  /* Ambient Backdrop Glow Halo behind Section Titles (Option 4) */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(260px, 45vw, 460px);
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(16, 185, 129, 0.16) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 75%);
+    filter: blur(45px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+  }
+}
+
+/* Subtle Signature Halos for Key Sections */
+#projects .section-header::before {
+  background: radial-gradient(ellipse, rgba(245, 158, 11, 0.18) 0%, rgba(16, 185, 129, 0.07) 50%, transparent 75%);
+}
+
+#skills .section-header::before {
+  background: radial-gradient(ellipse, rgba(56, 189, 248, 0.16) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 75%);
+}
+
+#contact .section-header::before {
+  background: radial-gradient(ellipse, rgba(16, 185, 129, 0.18) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 75%);
 }
 
 .section-tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent);
-  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+  color: #34d399;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #10b981, transparent);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+  }
 }
 
-.section-tag::before,
-.section-tag::after {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
-
+/* Animated Gradient Shimmer & Soft Atmospheric Glow (Option 2) */
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.2;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1.25;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
+
+  span {
+    display: inline-block;
+    background: linear-gradient(
+      135deg,
+      #10b981 0%,
+      #34d399 22%,
+      #a7f3d0 42%,
+      #fbbf24 60%,
+      #34d399 82%,
+      #10b981 100%
+    );
+    background-size: 240% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: headerTitleShimmer 7s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.38)) drop-shadow(0 0 32px rgba(16, 185, 129, 0.15));
+  }
 }
 
-.section-title span {
-  color: var(--accent);
+/* Section Specific Shimmer Accents */
+#projects .section-title span {
+  background: linear-gradient(
+    135deg,
+    #f59e0b 0%,
+    #fbbf24 25%,
+    #fef08a 45%,
+    #34d399 72%,
+    #f59e0b 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.42)) drop-shadow(0 0 32px rgba(16, 185, 129, 0.18));
+}
+
+#skills .section-title span {
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #34d399 28%,
+    #38bdf8 52%,
+    #6ee7b7 75%,
+    #10b981 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35)) drop-shadow(0 0 32px rgba(16, 185, 129, 0.2));
+}
+
+#about .section-title span {
+  background: linear-gradient(
+    135deg,
+    #38bdf8 0%,
+    #34d399 35%,
+    #6ee7b7 60%,
+    #38bdf8 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.32)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.18));
+}
+
+@keyframes headerTitleShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .accent { color: var(--accent); }

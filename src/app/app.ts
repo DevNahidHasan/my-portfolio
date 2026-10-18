@@ -23,6 +23,8 @@ export interface Project {
   githubUrl: string;
   featured?: boolean;
   status?: string;
+  categoryBadge?: string;
+  theme?: string;
   modalDetails: {
     problem: string;
     whatIBuilt: string;
@@ -45,6 +47,25 @@ export class App implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   private observers: IntersectionObserver[] = [];
 
+  // ─── Image Lightbox ──────────────────────────────────────
+  imageFullscreen = signal<string | null>(null);
+
+  openImageFullscreen(src: string): void {
+    this.imageFullscreen.set(src);
+    if (this.isBrowser) {
+      document.documentElement.classList.add('lightbox-open');
+      document.body.classList.add('lightbox-open');
+    }
+  }
+
+  closeImageFullscreen(): void {
+    this.imageFullscreen.set(null);
+    if (this.isBrowser) {
+      document.documentElement.classList.remove('lightbox-open');
+      document.body.classList.remove('lightbox-open');
+    }
+  }
+
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -53,6 +74,7 @@ export class App implements OnInit, OnDestroy {
   contactForm = {
     name: '',
     email: '',
+    company: '',
     message: ''
   };
   fieldTouched = signal<{ name: boolean; email: boolean; message: boolean }>({
@@ -101,7 +123,7 @@ export class App implements OnInit, OnDestroy {
     //{ id: 'experience',     label: 'Experience' },
     { id: 'projects',       label: 'Projects' },
     { id: 'skills',         label: 'Skills' },
-    { id: 'certifications', label: 'Certifications' },
+    //{ id: 'certifications', label: 'Certs' },
     { id: 'contact',        label: 'Contact' },
   ];
 
@@ -213,6 +235,8 @@ export class App implements OnInit, OnDestroy {
       tags: ['React', 'FastAPI', 'OAuth 2.0', 'REST APIs'],
       githubUrl: 'https://github.com',
       featured: false,
+      categoryBadge: 'Salesforce Integration',
+      theme: 'cyan',
       modalDetails: {
         problem: 'Standard Salesforce interfaces are complex and slow for field reps who need quick, streamlined customer and contact management without full CRM overhead.',
         whatIBuilt: 'Designed a lightweight, lightning-fast web application using React and Python FastAPI that connects directly to Salesforce via OAuth 2.0 to perform synchronized CRUD operations on contacts.',
@@ -235,6 +259,8 @@ export class App implements OnInit, OnDestroy {
       liveUrl: 'https://example.com/skillgap',
       githubUrl: 'https://github.com',
       featured: false,
+      categoryBadge: 'AI & Analytics Engine',
+      theme: 'violet',
       modalDetails: {
         problem: 'Students and career switchers often know the role they want but not which exact skills are missing or what to learn first.',
         whatIBuilt: 'Built a platform that implements rule-based scoring across 5+ job roles, surfaces missing skills and returns career roadmaps with interview preparation — connecting a React frontend with FastAPI REST APIs.',
@@ -256,6 +282,8 @@ export class App implements OnInit, OnDestroy {
       tags: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'Docker'],
       githubUrl: 'https://github.com',
       featured: false,
+      categoryBadge: 'High-Throughput Microservice',
+      theme: 'cyan',
       modalDetails: {
         problem: 'Businesses and creators require short, trackable links with detailed click analytics rather than relying on expensive third-party URL link shortening services.',
         whatIBuilt: 'Constructed a high-throughput URL shortening service using Base62 encoding, Redis caching for instant redirection, MySQL persistence, and comprehensive analytics tracking.',
@@ -283,87 +311,131 @@ export class App implements OnInit, OnDestroy {
 
   openProjectModal(project: Project): void {
     this.selectedProject.set(project);
-    if (this.isBrowser) document.body.style.overflow = 'hidden';
+    if (this.isBrowser) {
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+    }
   }
 
   closeProjectModal(): void {
     this.selectedProject.set(null);
-    if (this.isBrowser) document.body.style.overflow = '';
+    if (this.isBrowser) {
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+    }
   }
 
   skillGroups = [
     {
       category: 'Languages',
       icon: '⌨️',
-      skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'SQL', 'HTML5', 'CSS3']
+      theme: 'amber',
+      accentColor: '#f59e0b',
+      skills: ['Java', 'TypeScript', 'JavaScript', 'SQL', 'HTML5', 'CSS3']
+    },
+    {
+      category: 'Backend & Frameworks',
+      icon: '⚙️',
+      theme: 'emerald',
+      accentColor: '#10b981',
+      skills: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'JDBC', 'REST APIs']
+    },
+    {
+      category: 'Architecture & Security',
+      icon: '🛡️',
+      theme: 'violet',
+      accentColor: '#8b5cf6',
+      skills: ['Microservices', 'Domain-Driven Design (DDD)', 'Keycloak (IAM)', 'OAuth2 / OIDC', 'JWT', 'API Gateway', 'Service Discovery']
     },
     {
       category: 'Frontend',
       icon: '🎨',
-      skills: ['Angular', 'RxJS', 'SCSS/SASS', 'Tailwind CSS', 'Chart.js', 'Material UI']
+      theme: 'cyan',
+      accentColor: '#06b6d4',
+      skills: ['Angular', 'RxJS', 'Single Page Apps (SPA)', 'Thymeleaf', 'Responsive Design']
     },
     {
-      category: 'Backend',
-      icon: '⚙️',
-      skills: ['Node.js', 'Express.js', 'FastAPI', 'Django', 'REST APIs', 'GraphQL']
-    },
-    {
-      category: 'Databases',
+      category: 'Databases & Storage',
       icon: '🗄️',
-      skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Firebase', 'Supabase']
+      theme: 'teal',
+      accentColor: '#14b8a6',
+      skills: ['PostgreSQL', 'MySQL', 'H2 Database', 'ORM / JPA']
     },
     {
       category: 'Tools & DevOps',
       icon: '🔧',
-      skills: ['Git', 'Docker', 'GitHub Actions', 'Linux', 'Postman', 'Figma']
-    },
-    {
-      category: 'Cloud & Hosting',
-      icon: '☁️',
-      skills: ['Cloudflare', 'AWS (S3, EC2)', 'Vercel', 'Netlify', 'DigitalOcean']
+      theme: 'orange',
+      accentColor: '#f97316',
+      skills: ['Git', 'GitHub', 'Postman', 'Gradle', 'Maven', 'Docker', 'VS Code', 'IntelliJ IDEA']
     }
   ];
 
+  championAward = {
+    title: 'DIU CSE FEST Champion',
+    issuer: 'Daffodil International University',
+    date: 'Fall 2022',
+    badge: '🏆',
+    rank: '1st Place Champion',
+    category: 'Competitive Programming & Hackathon',
+    credentialId: 'DIU-FEST-2022-CHAMP',
+    description: 'Secured 1st Place in the premier university-wide competitive programming and software hackathon festival, outperforming top engineering teams across algorithmic problem-solving speed, precision, and strategy.',
+    skills: ['Competitive Programming', 'Algorithms', 'Data Structures', 'Team Leadership'],
+    url: '#',
+    accentColor: '#f59e0b'
+  };
+
   certifications = [
     {
-      title: 'DIU CSE FEST Champion',
-      issuer: 'Daffodil International University',
-      date: 'Fall 2022',
-      badge: '🏆',
-      url: '#',
-      color: '#10b981'
+      title: 'Angular Developer Certification',
+      issuer: 'HackerRank',
+      date: 'Oct 2023',
+      badge: '⚡',
+      iconType: 'angular',
+      category: 'Frontend Architecture',
+      credentialId: 'HR-ANG-DEV-5542',
+      description: 'Standardized assessment evaluating components, directives, reactive forms, routing, RxJS streams, and component architecture.',
+      skills: ['Angular', 'TypeScript', 'RxJS', 'Components & Routing'],
+      url: 'https://www.hackerrank.com/certificates',
+      color: '#dd0031'
     },
     {
       title: 'Problem Solving (Intermediate)',
       issuer: 'HackerRank',
       date: 'Aug 2023',
-      badge: '🏅',
-      url: '#',
-      color: '#10b981'
-    },
-    {
-      title: 'Angular Developer Certification',
-      issuer: 'HackerRank',
-      date: 'Oct 2023',
-      badge: '🏅',
-      url: '#',
+      badge: '🧠',
+      iconType: 'problem-solving',
+      category: 'Algorithms & Data Structures',
+      credentialId: 'HR-PS-INT-8910',
+      description: 'Rigorous assessment in algorithmic complexity, graph traversals, dynamic programming, and advanced data structure manipulation.',
+      skills: ['Algorithms', 'Data Structures', 'Graph Theory', 'Optimization'],
+      url: 'https://www.hackerrank.com/certificates',
       color: '#10b981'
     },
     {
       title: 'JavaScript (Advanced)',
       issuer: 'HackerRank',
       date: 'Sep 2023',
-      badge: '🏅',
-      url: '#',
-      color: '#10b981'
+      badge: '📜',
+      iconType: 'javascript',
+      category: 'Core Language',
+      credentialId: 'HR-JS-ADV-3104',
+      description: 'Deep dive into asynchronous programming, event loop mechanics, closures, prototypal inheritance, and ES6+ features.',
+      skills: ['JavaScript (ES6+)', 'Async/Await', 'Event Loop', 'Design Patterns'],
+      url: 'https://www.hackerrank.com/certificates',
+      color: '#f7df1e'
     },
     {
       title: 'SQL (Intermediate)',
       issuer: 'HackerRank',
       date: 'Nov 2023',
-      badge: '🏅',
-      url: '#',
-      color: '#10b981'
+      badge: '💾',
+      iconType: 'sql',
+      category: 'Database Systems',
+      credentialId: 'HR-SQL-INT-4821',
+      description: 'Tested proficiency in complex multi-table joins, subqueries, grouping, window functions, and relational query optimization.',
+      skills: ['SQL', 'Relational DBs', 'Complex Joins', 'Window Functions'],
+      url: 'https://www.hackerrank.com/certificates',
+      color: '#0284c7'
     }
   ];
 
@@ -390,6 +462,10 @@ export class App implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observers.forEach(obs => obs.disconnect());
+    if (this.isBrowser) {
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+    }
   }
 
   @HostListener('window:scroll')
@@ -401,7 +477,9 @@ export class App implements OnInit, OnDestroy {
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    if (this.selectedProject()) {
+    if (this.imageFullscreen()) {
+      this.closeImageFullscreen();
+    } else if (this.selectedProject()) {
       this.closeProjectModal();
     }
   }
@@ -493,9 +571,10 @@ export class App implements OnInit, OnDestroy {
           access_key: this.web3formsAccessKey,
           name: this.contactForm.name,
           email: this.contactForm.email,
+          company: this.contactForm.company || 'N/A',
           message: this.contactForm.message,
           from_name: 'Portfolio Contact Form',
-          subject: `New Portfolio Message from ${this.contactForm.name}`
+          subject: `New Portfolio Message from ${this.contactForm.name}${this.contactForm.company ? ' @ ' + this.contactForm.company : ''}`
         })
       });
 
@@ -503,9 +582,9 @@ export class App implements OnInit, OnDestroy {
 
       if (response.ok && result.success) {
         this.formSubmitted.set(true);
-        this.contactForm = { name: '', email: '', message: '' };
+        this.contactForm = { name: '', email: '', company: '', message: '' };
         this.fieldTouched.set({ name: false, email: false, message: false });
-        setTimeout(() => this.formSubmitted.set(false), 6000);
+        setTimeout(() => this.triggerConfetti(), 80);
       } else {
         this.formErrorMessage.set(result.message || 'Failed to send message. Please try again.');
         this.formError.set(true);
@@ -518,5 +597,175 @@ export class App implements OnInit, OnDestroy {
     } finally {
       this.formSubmitting.set(false);
     }
+  }
+
+  resetForm(): void {
+    this.formSubmitted.set(false);
+    this.contactForm = { name: '', email: '', company: '', message: '' };
+    this.fieldTouched.set({ name: false, email: false, message: false });
+  }
+
+  // ─── Party Popper / Confetti Burst Animation ──────────────
+  triggerConfetti(): void {
+    if (!this.isBrowser) return;
+
+    const canvas = document.querySelector('.party-popper-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    const colors = [
+      '#38bdf8', // Electric Cyan
+      '#34d399', // Emerald Green
+      '#fbbf24', // Amber Gold
+      '#a855f7', // Violet
+      '#f43f5e', // Rose Red
+      '#fde047', // Yellow
+      '#ffffff'  // Crystal White
+    ];
+
+    interface ConfettiParticle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      color: string;
+      rotation: number;
+      rotationSpeed: number;
+      wobble: number;
+      wobbleSpeed: number;
+      alpha: number;
+      shape: 'rect' | 'circle' | 'star';
+    }
+
+    const particles: ConfettiParticle[] = [];
+
+    // Cannon 1: Left Party Popper (shoots upward-right across the card)
+    for (let i = 0; i < 45; i++) {
+      const angle = (Math.random() * 45 + 35) * (Math.PI / 180);
+      const speed = Math.random() * 13 + 7;
+      particles.push({
+        x: 15,
+        y: canvas.height - 15,
+        vx: Math.cos(angle) * speed,
+        vy: -Math.sin(angle) * speed,
+        size: Math.random() * 6 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 12,
+        wobble: Math.random() * Math.PI,
+        wobbleSpeed: Math.random() * 0.12 + 0.05,
+        alpha: 1,
+        shape: Math.random() > 0.35 ? 'rect' : 'circle'
+      });
+    }
+
+    // Cannon 2: Right Party Popper (shoots upward-left across the card)
+    for (let i = 0; i < 45; i++) {
+      const angle = (Math.random() * 45 + 100) * (Math.PI / 180);
+      const speed = Math.random() * 13 + 7;
+      particles.push({
+        x: canvas.width - 15,
+        y: canvas.height - 15,
+        vx: Math.cos(angle) * speed,
+        vy: -Math.sin(angle) * speed,
+        size: Math.random() * 6 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 12,
+        wobble: Math.random() * Math.PI,
+        wobbleSpeed: Math.random() * 0.12 + 0.05,
+        alpha: 1,
+        shape: Math.random() > 0.35 ? 'rect' : 'circle'
+      });
+    }
+
+    // Cannon 3: Radial Sparkle Burst around Checkmark Icon
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height * 0.28;
+    for (let i = 0; i < 35; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 8 + 2;
+      particles.push({
+        x: centerX,
+        y: centerY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 2,
+        size: Math.random() * 5 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 16,
+        wobble: Math.random() * Math.PI,
+        wobbleSpeed: Math.random() * 0.15 + 0.05,
+        alpha: 1,
+        shape: 'star'
+      });
+    }
+
+    let animationId: number;
+    const startTime = performance.now();
+
+    const render = (time: number) => {
+      const elapsed = time - startTime;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      let anyAlive = false;
+
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.3; // gravity
+        p.vx *= 0.985; // air resistance
+        p.rotation += p.rotationSpeed;
+        p.wobble += p.wobbleSpeed;
+
+        if (elapsed > 2000) {
+          p.alpha -= 0.018;
+        }
+
+        if (p.alpha > 0 && p.y < canvas.height + 25) {
+          anyAlive = true;
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, p.alpha);
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.scale(Math.sin(p.wobble), 1);
+          ctx.fillStyle = p.color;
+
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.size / 2, -p.size, p.size, p.size * 1.6);
+          } else if (p.shape === 'circle') {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            // 4-pointed sparkle star
+            ctx.beginPath();
+            for (let j = 0; j < 4; j++) {
+              ctx.lineTo(Math.cos((j * Math.PI) / 2) * p.size, Math.sin((j * Math.PI) / 2) * p.size);
+              ctx.lineTo(
+                Math.cos((j * Math.PI) / 2 + Math.PI / 4) * (p.size * 0.35),
+                Math.sin((j * Math.PI) / 2 + Math.PI / 4) * (p.size * 0.35)
+              );
+            }
+            ctx.closePath();
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      if (anyAlive && elapsed < 4200) {
+        animationId = requestAnimationFrame(render);
+      }
+    };
+
+    animationId = requestAnimationFrame(render);
   }
 }
