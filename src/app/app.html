@@ -1,1353 +1,873 @@
-<!-- ============================================================
-     MULTI-COLOR AMBIENT MESH GLOW BACKGROUND
-     ============================================================ -->
-<div class="ambient-mesh-canvas" aria-hidden="true">
-  <div class="ambient-orb orb-cyan"></div>
-  <div class="ambient-orb orb-emerald"></div>
-  <div class="ambient-orb orb-amber"></div>
-  <div class="ambient-orb orb-violet"></div>
-  <div class="ambient-orb orb-amber-bottom"></div>
-  <div class="ambient-orb orb-center"></div>
-  <div class="ambient-grid-overlay"></div>
-  <div class="ambient-vignette"></div>
-</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.38 1.38 0 0 0-1.951-.003l-2.396 2.392a3.322 3.322 0 0 1-4.757.074l-.039-.038-3.13-3.072a3.528 3.528 0 0 1-.954-1.375 3.35 3.35 0 0 1-.223-1.432 3.165 3.165 0 0 1 .151-1.076 3.313 3.313 0 0 1 .74-1.215l3.197-3.422a1.375 1.375 0 0 0 .393-1.011 1.37 1.37 0 0 0-.411-.976l-2.617-2.62a1.372 1.372 0 0 0-.986-.408z" fill="currentColor"/><path d="M17.72 9.296a1.375 1.375 0 0 0-.979.408l-9.176 9.176a1.375 1.375 0 1 0 1.944 1.945l9.176-9.176a1.375 1.375 0 0 0-.965-2.353z" fill="#FFA116"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.9.8A3.5 3.5 0 0 0 4 9a3.5 3.5 0 0 0 1.5 6A3.5 3.5 0 0 0 9 19a3 3 0 0 0 3 2V5zM12 5a3 3 0 1 1 5.9.8A3.5 3.5 0 0 1 20 9a3.5 3.5 0 0 1-1.5 6A3.5 3.5 0 0 1 15 19a3 3 0 0 1-3 2"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.8"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><rect width="24" height="24" rx="4.5" fill="#0A66C2"/><path d="M7.6 19H4.8V9.8h2.8V19zM6.2 8.5a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2zm13 10.5h-2.8v-4.6c0-1.2-.5-1.9-1.6-1.9-1 0-1.5.7-1.7 1.4v5.1H10.3V9.8h2.7v1.3c.4-.7 1.3-1.6 2.8-1.6 2 0 3.4 1.3 3.4 4.1V19z" fill="#FFFFFF"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.500A2.500 2.500 0 0 1 6.500 17H20V3H6.500A2.500 2.500 0 0 0 4 5.500v14zM4 19.500A2.500 2.500 0 0 0 6.500 22H20v-5"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z" fill="currentColor"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-11 11M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-mail-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8"/><polyline points="3,8 12,13 18,9"/><path d="M16 3h5v5"/><path d="M14 10l7-7"/></symbol>
+  </defs>
+</svg>
 
-<!-- ============================================================
-     NAVBAR
-     ============================================================ -->
-<nav class="navbar" [class.scrolled]="isScrolled()">
-  <div class="container nav-inner">
-    <!-- Logo (Just Logo) -->
-    <button class="nav-logo" (click)="scrollTo('home')" aria-label="Go to top">
-      <div class="logo-box">
-        <span class="logo-bracket">&lt;</span>
-        <span class="logo-name">NH</span>
-        <span class="logo-bracket">&gt;</span>
+<!-- Reusable Slide / Mock Screen Template -->
+<ng-template #slideContent let-p="project" let-i="index">
+  @if (p.images[i]) {
+    <img [src]="p.images[i]" [alt]="p.name + ' — ' + (p.slides[i] || '')" loading="lazy">
+  } @else {
+    <div class="mock" [style.--c1]="p.c[0]" [style.--c2]="p.c[1]">
+      <div class="m-bar">
+        <i></i><i></i><i></i>
+        <span>{{ p.slug }}.app</span>
       </div>
-    </button>
+      <div class="m-body">
+        <aside class="m-side">
+          <b></b><u></u><u></u><u></u><u></u>
+        </aside>
+        <div class="m-main">
+          <h4>{{ p.slides[i] }}</h4>
+          @switch (i % 3) {
+            @case (0) {
+              <div class="m-stats">
+                <div><b>128</b><span>Total</span></div>
+                <div><b>34</b><span>Active</span></div>
+                <div><b>96%</b><span>Success</span></div>
+              </div>
+              <div class="m-chart">
+                @for (h of mockChartHeights; track $index) {
+                  <i [style.height.%]="h"></i>
+                }
+              </div>
+            }
+            @case (1) {
+              @for (status of mockRowStatuses; track $index) {
+                <div class="m-row">
+                  <em></em>
+                  <div><i></i><i></i></div>
+                  <span>{{ status }}</span>
+                </div>
+              }
+            }
+            @default {
+              <div class="m-field"><strong>Title</strong>Enter details…</div>
+              <div class="m-field"><strong>Email</strong>name&#64;example.com</div>
+              <div class="m-field" style="padding-bottom:5cqw"><strong>Description</strong>Write something…</div>
+              <div class="m-btn">Submit</div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  }
+</ng-template>
 
-    <!-- Right-side Oval/Pill Navigation Box -->
-    <div class="nav-pill-box">
-      <ul class="nav-links">
-        @for (link of navLinks; track link.id) {
-          @if (link.id !== 'contact') {
-            <li>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#home" class="brand" aria-label="S M Nahid Hasan home" (click)="onNavClick('home')">
+      <span class="mono"><img src="nahid.jpg" alt="S M Nahid Hasan"></span>
+      <span class="brand-name">S M Nahid Hasan</span>
+    </a>
+
+    <!-- Unified Desktop Nav Pill -->
+    <nav class="nav-pill" aria-label="Primary Navigation">
+      <div class="nav-links">
+        @for (item of navItems; track item.id) {
+          <a
+            [href]="'#' + item.id"
+            class="nav-link"
+            [class.active]="activeSection() === item.id"
+            (click)="onNavClick(item.id)"
+          >{{ item.label }}</a>
+        }
+      </div>
+
+      <div class="nav-divider" aria-hidden="true"></div>
+
+      <div class="nav-controls">
+        <div class="theme-picker" id="theme-picker" [class.open]="themeMenuOpen() === 'desktop'">
+          <button
+            type="button"
+            class="theme-btn"
+            id="theme-btn"
+            aria-haspopup="true"
+            [attr.aria-expanded]="themeMenuOpen() === 'desktop'"
+            [attr.aria-label]="currentThemeAria()"
+            [attr.title]="currentThemeTitle()"
+            (click)="toggleThemeMenu('desktop', $event)"
+          >
+            <span class="theme-dot" id="theme-dot"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="theme-dropdown" id="theme-dropdown" role="menu">
+            @for (opt of themeOptions; track opt.id) {
               <button
-                class="nav-link"
-                [class.active]="isActive(link.id)"
-                (click)="scrollTo(link.id)"
+                type="button"
+                class="theme-opt"
+                [class.active]="currentTheme() === opt.id"
+                [attr.data-val]="opt.id"
+                role="menuitem"
+                (click)="selectTheme(opt.id, $event)"
               >
-                {{ link.label }}
+                <span class="opt-swatch"></span>{{ opt.label }}<span class="opt-check">✓</span>
               </button>
+            }
+          </div>
+        </div>
+
+        <a
+          class="nav-btn-contact"
+          id="nav-contact-btn"
+          href="#contact"
+          [class.active]="activeSection() === 'contact'"
+          (click)="onNavClick('contact')"
+        >
+          <svg><use href="#i-mail"/></svg><span>Contact</span>
+        </a>
+        <a class="nav-btn-resume" id="nav-resume" href="resume.pdf" target="_blank" rel="noreferrer">
+          <svg><use href="#i-down"/></svg><span>Résumé</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile Header Actions (visible on mobile/tablet) -->
+    <div class="mobile-nav-actions">
+      <div class="theme-picker mobile-theme-picker" id="mobile-theme-picker">
+        <div class="theme-picker" id="theme-picker-mobile" [class.open]="themeMenuOpen() === 'mobile'">
+          <button
+            type="button"
+            class="theme-btn"
+            id="theme-btn-mobile"
+            aria-haspopup="true"
+            [attr.aria-expanded]="themeMenuOpen() === 'mobile'"
+            [attr.aria-label]="currentThemeAria()"
+            [attr.title]="currentThemeTitle()"
+            (click)="toggleThemeMenu('mobile', $event)"
+          >
+            <span class="theme-dot"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="theme-dropdown" role="menu">
+            @for (opt of themeOptions; track opt.id) {
+              <button
+                type="button"
+                class="theme-opt"
+                [class.active]="currentTheme() === opt.id"
+                [attr.data-val]="opt.id"
+                role="menuitem"
+                (click)="selectTheme(opt.id, $event)"
+              >
+                <span class="opt-swatch"></span>{{ opt.label }}<span class="opt-check">✓</span>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="hamburger-btn"
+        id="hamburger-btn"
+        [class.open]="mobileDrawerOpen()"
+        aria-label="Toggle navigation menu"
+        [attr.aria-expanded]="mobileDrawerOpen()"
+        (click)="toggleMobileMenu($event)"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div
+    class="mobile-drawer"
+    id="mobile-drawer"
+    [class.open]="mobileDrawerOpen()"
+    [attr.aria-hidden]="!mobileDrawerOpen()"
+  >
+    <div class="mobile-menu-links">
+      @for (item of navItems; track item.id) {
+        <a
+          [href]="'#' + item.id"
+          class="mobile-link"
+          [class.active]="activeSection() === item.id"
+          (click)="onNavClick(item.id)"
+        >{{ item.label }}</a>
+      }
+    </div>
+    <div class="mobile-drawer-footer">
+      <a
+        class="btn ghost sm"
+        href="#contact"
+        id="mobile-contact-btn"
+        [class.active]="activeSection() === 'contact'"
+        (click)="onNavClick('contact')"
+      >
+        <svg><use href="#i-mail"/></svg>Contact
+      </a>
+      <a class="btn sm" href="resume.pdf" download="SM-Nahid-Hasan-Resume.pdf" (click)="closeMobileMenu()">
+        <svg><use href="#i-down"/></svg>Download Résumé
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <!-- HOME SCREEN FOLD (HERO + STATS) -->
+    <div class="home-screen" id="home">
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <span class="pill"><i></i>Open to Software Engineer opportunities</span>
+          <h1>S M Nahid Hasan</h1>
+          <p class="role">Software Engineer · Backend &amp; Full-Stack</p>
+          <p class="loc"><svg><use href="#i-pin"/></svg>Dhaka, Bangladesh</p>
+          <p class="lead">
+            I build <b>secure, scalable backend systems</b> with <b>Java and Spring Boot</b> — microservices, REST APIs and OAuth2/Keycloak — and pair them with clean <b>Angular</b> frontends to ship complete, production-ready applications.
+          </p>
+
+          <!-- Line 1: View projects (main CTA with icon), Contact, View resume -->
+          <div class="hero-cta">
+            <a class="hero-cta-main" id="hero-projects" href="#projects" (click)="onNavClick('projects')">
+              <svg><use href="#i-layers"/></svg><span>View Projects</span>
+            </a>
+            <a class="hero-twin-btn" id="hero-contact" href="#contact" (click)="onNavClick('contact')">
+              <svg><use href="#i-mail"/></svg><span>Contact Me</span>
+            </a>
+            <a class="hero-twin-btn" id="hero-resume" href="resume.pdf" download="SM-Nahid-Hasan-Resume.pdf">
+              <svg><use href="#i-down"/></svg><span>View Résumé</span>
+            </a>
+          </div>
+
+          <!-- Line 2: Social Links -->
+          <div class="socials">
+            <a class="sbtn sbtn-li" id="soc-linkedin" href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noreferrer">
+              <img src="assets/linkedin.webp" alt="LinkedIn" class="sbtn-img">
+              <span>LinkedIn</span>
+            </a>
+            <a class="sbtn sbtn-gh" id="soc-github" href="https://github.com/DevNahidHasan" target="_blank" rel="noreferrer">
+              <img src="assets/GitHub_Invertocat_Black.svg" alt="GitHub" class="sbtn-img gh-img">
+              <span>GitHub</span>
+            </a>
+            <a class="sbtn sbtn-lc" id="soc-leetcode" href="https://leetcode.com/u/DevNahidHasan" target="_blank" rel="noreferrer">
+              <img [src]="leetcodeLogo()" alt="LeetCode" class="sbtn-img lc-img">
+              <span>LeetCode</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="stage" aria-label="Profile photo and core tech stack">
+          <div class="glow"></div>
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <span class="float f1"><i></i>Java</span>
+          <span class="float f2"><i></i>Spring Boot</span>
+          <span class="float f3"><i></i>Angular</span>
+          <span class="float f4"><i></i>Microservices</span>
+          <div class="profile-card">
+            <div class="pc-in">
+              <div class="pc-img"><img src="nahid.jpg" alt="Portrait of S M Nahid Hasan"></div>
+              <div class="pc-stack">
+                <small>Core tech stack</small>
+                <div class="stack">
+                  @for (badge of heroStackBadges; track badge.name) {
+                    <span [class.p]="badge.primary">{{ badge.name }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- STATS -->
+      <div class="stats reveal" aria-label="Key facts">
+        @for (stat of stats; track stat.label) {
+          <div class="stat">
+            <div class="stat-top">
+              <span class="ico" [class.w]="stat.warmIcon">
+                <svg><use [attr.href]="'#' + stat.icon"/></svg>
+              </span>
+              <span class="lbl">{{ stat.label }}</span>
+            </div>
+            <strong>
+              {{ stat.value }}
+              @if (stat.suffix) {
+                <small>{{ stat.suffix }}</small>
+              }
+            </strong>
+            <p>{{ stat.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="s" id="about">
+      <div class="head reveal">
+        <p class="eyebrow">About me</p>
+        <h2>Engineer first. Builder always.</h2>
+      </div>
+      <div class="about">
+        <div class="about-copy reveal">
+          <p>I'm a <b>Software Engineer</b> dedicated to crafting reliable, high-performance distributed systems and modern web applications. My core strengths are <b>Java, Spring Boot, Microservices</b> and secure authentication architectures.</p>
+          <p>In my projects I've implemented <b>Domain-Driven Design</b>, API Gateways, Eureka service discovery and <b>Keycloak OAuth2/OIDC</b>. On the client side I build responsive, component-driven SPAs using <b>Angular and TypeScript</b>.</p>
+          <p>Beyond system design, I love algorithmic challenges — Section Champion in the <i>Take Off</i> contest and finalist in <i>Unlock the Algorithm</i>.</p>
+        </div>
+        <article class="edu-card special reveal" data-label="Education">
+          <span class="ico"><svg><use href="#i-grad"/></svg></span>
+          <h3>B.Sc. in Computer Science &amp; Engineering</h3>
+          <p>Daffodil International University · Dhaka, Bangladesh</p>
+          <div class="cgpa">
+            <strong>3.92 <small>/ 4.00</small></strong>
+            <span>CGPA<br>Top-tier academic standing</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="s" id="skills">
+      <div class="head reveal">
+        <p class="eyebrow">Technical skills</p>
+        <h2>Core stack, clearly organised</h2>
+      </div>
+      <div class="stackbar special reveal" data-label="Primary stack">
+        <div class="sb-head">
+          <div class="sb-title">
+            <span class="ico"><svg><use href="#i-layers"/></svg></span>
+            <div>
+              <h3>Primary stack</h3>
+              <small>The technologies I use every day</small>
+            </div>
+          </div>
+        </div>
+        <ul class="sb-grid">
+          @for (item of primaryStack; track item.name) {
+            <li class="sb-item" [style.--bc]="item.color">
+              <i>{{ item.letter }}</i>{{ item.name }}
             </li>
           }
-        }
-      </ul>
-
-      <span class="nav-divider" aria-hidden="true"></span>
-
-      <!-- Special Action Buttons (Contact + Resume) -->
-      <div class="nav-actions">
-        <!-- Highlighted Contact Button (Distinct Sky Blue Accent) -->
-        <button
-          class="nav-btn-pill nav-contact-btn"
-          [class.active]="isActive('contact')"
-          (click)="scrollTo('contact')"
-          aria-label="Contact Nahid"
-        >
-          <span>Contact</span>
-          <svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </button>
-
-        <!-- Highlighted Resume Download Button (Green Accent) -->
-        <a href="resume.pdf" class="nav-btn-pill nav-resume-btn" target="_blank" rel="noopener">
-          <span>Resume</span>
-          <svg class="btn-icon resume-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+        </ul>
       </div>
-    </div>
-
-    <!-- Mobile Hamburger -->
-    <button class="hamburger" [class.open]="menuOpen()" (click)="toggleMenu()" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <!-- Mobile Menu Drawer -->
-  <div class="mobile-menu" [class.open]="menuOpen()">
-    @for (link of navLinks; track link.id) {
-      @if (link.id !== 'contact') {
-        <button
-          class="mobile-link"
-          [class.active]="isActive(link.id)"
-          (click)="scrollTo(link.id)"
-        >
-          {{ link.label }}
-        </button>
-      }
-    }
-
-    <div class="mobile-actions">
-      <button
-        class="mobile-btn-pill mobile-contact-btn"
-        [class.active]="isActive('contact')"
-        (click)="scrollTo('contact')"
-      >
-        <span>Contact</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-      </button>
-
-      <a href="resume.pdf" class="mobile-btn-pill mobile-resume-btn" target="_blank" rel="noopener">
-        <span>Resume</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
-      </a>
-    </div>
-  </div>
-</nav>
-
-<!-- ============================================================
-     HERO SECTION
-     ============================================================ -->
-<section id="home" class="hero-section">
-  <div class="container hero-inner">
-    <!-- Left Content -->
-    <div class="hero-content">
-      <!-- Status Badge -->
-      <div class="status-badge reveal">
-        <span class="pulse-dot"></span>
-        <span class="badge-text">OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES</span>
-      </div>
-
-      <!-- Small Greeting (requested: 'Hi I'm' choto kore) -->
-      <p class="hero-greeting reveal reveal-delay-1">Hi, I'm</p>
-
-      <!-- Name & Role -->
-      <div class="hero-title-group reveal reveal-delay-2">
-        <h1 class="hero-name">S M NAHID HASAN</h1>
-        <div class="hero-role-title">SOFTWARE ENGINEER</div>
-      </div>
-
-      <!-- Accent Divider Line -->
-      <div class="hero-accent-line reveal reveal-delay-3"></div>
-
-      <!-- Tech Stack & Location -->
-      <div class="hero-meta reveal reveal-delay-4">
-        <div class="hero-tech-line">
-          Java &middot; Spring Boot &middot; Microservice &middot; REST API &middot; Angular &middot; MySQL &middot;
-        </div>
-        <div class="hero-location-line">
-          <svg class="loc-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Dhaka, Bangladesh</span>
-        </div>
-      </div>
-
-      <!-- Bio -->
-      <p class="hero-bio reveal reveal-delay-5">
-        I build backend systems with Java &amp; Spring Boot — APIs, databases, microservices — and wire them up to the frontend with Angular to ship complete, working applications.
-      </p>
-      <!-- CTAs: 2 lines with 3 buttons each (6 buttons, identical sizing) -->
-      <div class="hero-btns-grid reveal reveal-delay-6">
-        <!-- Line 1: View Projects | Contact | Download Resume -->
-        <button class="hero-btn hero-btn-projects" (click)="scrollTo('projects')">
-          <span class="btn-text-desktop">View Projects</span>
-          <span class="btn-text-mobile">Projects</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-
-        <button class="hero-btn hero-btn-contact" (click)="scrollTo('contact')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>Contact</span>
-        </button>
-
-        <a href="resume.pdf" class="hero-btn hero-btn-resume" target="_blank" rel="noopener">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span class="btn-text-desktop">Download Resume</span>
-          <span class="btn-text-mobile">Resume</span>
-        </a>
-
-        <!-- Line 2: LinkedIn | GitHub | LeetCode -->
-        <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" class="hero-btn hero-btn-linkedin" aria-label="LinkedIn">
-          <img src="assets/linkedin.webp" alt="LinkedIn" class="btn-logo-img" />
-          <span>LinkedIn</span>
-        </a>
-
-        <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="hero-btn hero-btn-github" aria-label="GitHub">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-          <span>GitHub</span>
-        </a>
-
-        <a href="https://leetcode.com/u/DevNahidHasan" target="_blank" rel="noopener" class="hero-btn hero-btn-leetcode" aria-label="LeetCode">
-          <img src="assets/leetcode-dark.webp" alt="LeetCode" class="btn-logo-img" />
-          <span>LeetCode</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Right: Code Window Photo Card -->
-    <div class="hero-card reveal reveal-delay-3">
-      <div class="photo-frame">
-        <!-- Moving Glow Animation Behind -->
-        <div class="photo-glow-ring"></div>
-
-        <!-- Terminal Window Card -->
-        <div class="code-window-card">
-          <!-- Window Header (Traffic lights + Title) -->
-          <div class="window-header">
-            <div class="window-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-            </div>
-            <span class="window-title">nahid.config.js</span>
-          </div>
-
-          <!-- Photo Body with Terminal Overlay -->
-          <div class="window-photo-wrap">
-            <img
-              src="profile.jpg"
-              alt="Nahid Hasan — Software Developer"
-              class="profile-photo"
-              onerror="if(this.src.indexOf('assets')===-1){this.src='assets/profile.jpg'}else{this.style.display='none'; this.nextElementSibling.style.display='flex';}"
-            />
-            <!-- Fallback avatar if no image yet -->
-            <div class="photo-placeholder" style="display:none;">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-              <span>Photo</span>
-            </div>
-
-            <!-- Terminal Overlay at Bottom -->
-            <div class="terminal-overlay">
-              <div class="terminal-line-1">
-                <span class="term-prompt">$</span> <span class="term-whoami">whoami</span>
-              </div>
-              <div class="terminal-line-2">
-                <span class="term-arrow">&gt;</span> java &middot; spring boot &middot; microservice &middot; rest api &middot; angular &middot; mysql &middot;
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-sep" aria-hidden="true"></div>
-
-<!-- ============================================================
-     ABOUT SECTION
-     ============================================================ -->
-<section id="about" class="section about-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag reveal">About Me</div>
-      <h2 class="section-title reveal reveal-delay-1">Who <span>Am I ?</span></h2>
-    </div>
-
-    <div class="about-grid">
-      <!-- Bio Column (Bento Card) -->
-      <div class="bento-card bento-bio-card reveal reveal-delay-1">
-        <div class="bento-card-header">
-          <div class="bento-icon-badge">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <span class="bento-card-label">Biography</span>
-          <div class="bento-role-badge">
-            <span class="role-sparkle">✦</span> Software Engineer
-          </div>
-        </div>
-
-        <div class="bento-bio-text">
-          <p>
-            I'm a passionate <span class="accent">Computer Science student</span> and aspiring 
-            <span class="accent">Software Engineer</span>, actively working to specialize in 
-            building scalable backend systems, microservices, and modern web applications.
-          </p>
-          <p>
-            With a strong academic track record (<span class="accent">CGPA 3.91 / 4.00</span> 
-            at Daffodil International University), I am continuously deepening my hands-on skills in 
-            <span class="accent">Java</span>, <span class="accent">Spring Boot</span>, 
-            <span class="accent">Microservices</span>, and authentication with 
-            <span class="accent">Keycloak &amp; OAuth2</span>, while bridging the gap to the frontend with 
-            <span class="accent">Angular</span>.
-          </p>
-          <p>
-            Beyond architecture and web development, I love sharpening my problem-solving skills through competitive programming — 
-            having earned <span class="accent">Section Champion</span> honors in the <span class="accent">Take Off</span> programming contest and 
-            competing as a finalist in <span class="accent">Unlock the Algorithm</span>.
-          </p>
-        </div>
-
-        <div class="bento-bio-tags">
-          <span class="bento-chip chip-amber"><span class="chip-dot"></span>🚀 Fast Learner</span>
-          <span class="bento-chip chip-emerald"><span class="chip-dot"></span>🤝 Team Player</span>
-          <span class="bento-chip chip-cyan"><span class="chip-dot"></span>🎯 Problem Solver</span>
-        </div>
-      </div>
-
-      <!-- Info Cards Column -->
-      <div class="about-cards">
-        <!-- Education Card (Bento Style) -->
-        <div class="bento-card bento-edu-card reveal reveal-delay-2">
-          <div class="bento-card-header">
-            <div class="bento-icon-badge">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-              </svg>
-            </div>
-            <span class="bento-card-label">Education</span>
-            <div class="bento-gpa-badge">
-              <span class="gpa-star">★</span> CGPA 3.91 / 4.00
-            </div>
-          </div>
-          <div class="bento-edu-body">
-            <h4 class="bento-edu-degree">B.Sc in Computer Science &amp; Engineering</h4>
-            <div class="bento-edu-school">
-              <svg class="school-pin-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>Daffodil International University</span>
-            </div>
-            <div class="bento-edu-footer">
-              <span class="edu-status-pill">
-                <span class="status-indicator"></span> Undergraduate Student
-              </span>
-              <span class="edu-major-pill">Dept. of CSE</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Currently Focused Card (Bento Style) -->
-        <div class="bento-card bento-focus-card reveal reveal-delay-3">
-          <div class="bento-card-header">
-            <div class="bento-icon-badge">
-              <span class="radar-dot"></span>
-            </div>
-            <span class="bento-card-label">Current Focus On</span>
-            <div class="bento-active-badge">
-              <span class="active-pulse-dot"></span> Actively Learning
-            </div>
-          </div>
-          <div class="bento-focus-body">
-            <div class="bento-focus-chips">
-              <span class="bento-chip"><span class="chip-dot"></span>Angular</span>
-              <span class="bento-chip"><span class="chip-dot"></span>System Design</span>
-              <span class="bento-chip"><span class="chip-dot"></span>Problem Solving</span>
-              <span class="bento-chip"><span class="chip-dot"></span>Microservices</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tech Stack Dashboard (Bento Style) -->
-    <div class="bento-card bento-tech-card reveal reveal-delay-3">
-      <div class="bento-card-header">
-        <div class="bento-icon-badge">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-        </div>
-        <span class="bento-card-label">Tech Stack</span>
-        <span class="bento-tech-count">8 Core Domains</span>
-      </div>
-      <div class="glance-grid">
-        @for (item of atAGlance; track item.title) {
-          <div class="glance-card">
-            <div class="glance-icon">
-              @switch (item.icon) {
-                @case ('coffee') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                    <line x1="6" y1="1" x2="6" y2="4"/>
-                    <line x1="10" y1="1" x2="10" y2="4"/>
-                    <line x1="14" y1="1" x2="14" y2="4"/>
-                  </svg>
-                }
-                @case ('spring') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10Z"/>
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
-                  </svg>
-                }
-                @case ('database') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-                  </svg>
-                }
-                @case ('rocket') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                    <path d="M12 9V4s3.03.55 4 2c1.08 1.62 0 5 0 5"/>
-                  </svg>
-                }
-                @case ('security') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <path d="m9 12 2 2 4-4"/>
-                  </svg>
-                }
-                @case ('angular') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 5.5 3.5 18 12 22 20.5 18 22 5.5 12 2"/>
-                    <polyline points="7.5 16.5 12 6.5 16.5 16.5"/>
-                    <line x1="9.5" y1="12.5" x2="14.5" y2="12.5"/>
-                  </svg>
-                }
-                @case ('tools') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                  </svg>
-                }
-                @case ('code') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6"/>
-                    <polyline points="8 6 2 12 8 18"/>
-                  </svg>
-                }
-              }
-            </div>
-            <div class="glance-title">{{ item.title }}</div>
-            <div class="glance-desc">{{ item.desc }}</div>
-          </div>
-        }
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     EXPERIENCE SECTION
-     ============================================================ -->
-<!-- <section id="experience" class="section experience-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag reveal">Work History</div>
-      <h2 class="section-title reveal reveal-delay-1">My <span>Experience</span></h2>
-    </div>
-
-    <div class="experience-list">
-      @for (exp of experiences; track exp.number) {
-        <div class="exp-card card reveal reveal-delay-2">
-          <div class="exp-number">{{ exp.number }}</div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div>
-                <h3 class="exp-role">{{ exp.role }}</h3>
-                <div class="exp-company">@ {{ exp.company }}</div>
-              </div>
-              <div class="exp-meta">
-                <span class="badge">{{ exp.type }}</span>
-                <span class="exp-period">{{ exp.period }}</span>
-              </div>
-            </div>
-            <ul class="exp-highlights">
-              @for (point of exp.highlights; track $index) {
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
-                  {{ point }}
-                </li>
+      <div class="skills">
+        @for (cat of skillCategories; track cat.title) {
+          <article class="skill-card reveal">
+            <h3>
+              <span class="ico"><svg><use [attr.href]="'#' + cat.icon"/></svg></span>
+              {{ cat.title }}
+            </h3>
+            <ul class="chips">
+              @for (chip of cat.chips; track chip.name) {
+                <li [class.hot]="chip.hot">{{ chip.name }}</li>
               }
             </ul>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</section> -->
-
-<!-- ============================================================
-     PROJECTS SECTION
-     ============================================================ -->
-<div class="section-sep" aria-hidden="true"></div>
-
-<section id="projects" class="section projects-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag reveal">PROJECTS</div>
-      <h2 class="section-title reveal reveal-delay-1"><span>Projects</span> I've Built</h2>
-      <p class="section-subtitle reveal reveal-delay-2">Things I've built — from backend microservices to full-stack applications.</p>
-    </div>
-
-    <!-- Featured Project Card -->
-    @if (featuredProject; as feat) {
-      <div class="bento-card proj-featured-card reveal reveal-delay-2">
-
-        <!-- Left: Browser Frame Preview -->
-        <div class="proj-browser-frame">
-          <div class="proj-browser-bar">
-            <div class="window-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-            </div>
-            <div class="proj-url-bar">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <span>{{ feat.title.toLowerCase().replace(' ', '-') }}.app</span>
-            </div>
-            <div class="proj-featured-badge">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              Featured
-            </div>
-          </div>
-          <div class="proj-img-wrap" (click)="openProjectModal(feat)">
-            <img [src]="feat.image" [alt]="feat.title" class="project-img" />
-            <div class="preview-overlay">
-              <span>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                View Details
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Info Panel -->
-        <div class="proj-info-panel">
-          @if (feat.status) {
-            <div class="project-status-pill">
-              <span class="status-pulse-dot"></span>
-              {{ feat.status }}
-            </div>
-          }
-          <h3 class="proj-title">{{ feat.title }}</h3>
-          <div class="proj-subtitle">{{ feat.subtitle }}</div>
-          <div class="proj-divider-line" aria-hidden="true"></div>
-          <p class="proj-desc">{{ feat.description }}</p>
-
-          <div class="project-tags-list">
-            @for (tag of feat.tags; track tag) {
-              <span class="project-pill-tag">{{ tag }}</span>
-            }
-          </div>
-
-          <div class="proj-action-row">
-            @if (feat.liveUrl) {
-              <a [href]="feat.liveUrl" target="_blank" rel="noopener" class="proj-btn-live">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Live Demo
-              </a>
-            }
-            <a [href]="feat.githubUrl" target="_blank" rel="noopener" class="proj-btn-ghost">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <button type="button" class="proj-btn-details" (click)="openProjectModal(feat)">
-              Details
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    }
-
-    <!-- 2-Column Projects Grid -->
-    <div class="projects-subgrid">
-      @for (proj of regularProjects; track proj.title) {
-        <div class="bento-card proj-mini-card proj-theme-{{ proj.theme }} reveal reveal-delay-2">
-          <!-- Browser frame preview -->
-          <div class="proj-browser-frame" (click)="openProjectModal(proj)">
-            <div class="proj-browser-bar">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="proj-url-bar compact">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span>{{ proj.title.toLowerCase().split(' ')[0] }}.app</span>
-              </div>
-              @if (proj.categoryBadge) {
-                <span class="proj-cat-badge">{{ proj.categoryBadge }}</span>
-              }
-            </div>
-            <div class="proj-img-wrap">
-              <img [src]="proj.image" [alt]="proj.title" class="project-img" />
-              <div class="preview-overlay">
-                <span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  View Details
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="proj-mini-body">
-            <h3 class="proj-mini-title">{{ proj.title }}</h3>
-            <div class="proj-mini-subtitle">{{ proj.subtitle }}</div>
-            <div class="proj-divider-line" aria-hidden="true"></div>
-            <p class="proj-mini-desc">{{ proj.description }}</p>
-            <div class="project-tags-list">
-              @for (tag of proj.tags.slice(0, 5); track tag) {
-                <span class="project-pill-tag">{{ tag }}</span>
-              }
-            </div>
-            <div class="proj-action-row">
-              @if (proj.liveUrl) {
-                <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="proj-btn-live small">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Live Demo
-                </a>
-              }
-              <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="proj-btn-ghost small">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <button type="button" class="proj-btn-details small" (click)="openProjectModal(proj)">
-                Details
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      }
-
-      <!-- More on GitHub Special Developer Bento Card -->
-      <div class="bento-card proj-github-card reveal reveal-delay-3">
-        <div class="proj-github-glow" aria-hidden="true"></div>
-        <div class="proj-github-watermark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </div>
-
-        <div class="proj-github-top">
-          <div class="proj-github-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-          </div>
-          <div class="proj-github-badge">
-            <span class="github-pulse-dot"></span>
-            <span>Public Repositories</span>
-          </div>
-        </div>
-
-        <div class="proj-github-content">
-          <div class="proj-github-label">✦ Open Source &amp; Research</div>
-          <h3 class="proj-github-title">More on GitHub</h3>
-          <p class="proj-github-desc">
-            Explore my algorithmic contest solutions, system design blueprints, backend microservices prototypes, and open-source contributions.
-          </p>
-
-          <div class="proj-github-tags">
-            <span class="github-chip">⚡ Clean Architecture</span>
-            <span class="github-chip">🔒 OAuth2 / Security</span>
-            <span class="github-chip">🧩 Problem Solving</span>
-          </div>
-        </div>
-
-        <div class="proj-github-footer">
-          <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="proj-github-cta-btn">
-            <span>Explore @DevNahidHasan on GitHub</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="7" y1="17" x2="17" y2="7"/>
-              <polyline points="7 7 17 7 17 17"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PROJECT DETAILS MODAL (Image 3 Style)
-     ============================================================ -->
-@if (selectedProject(); as proj) {
-  <div class="project-modal-backdrop" (click)="closeProjectModal()">
-    <div class="project-modal-dialog" (click)="$event.stopPropagation()">
-      <!-- 1. Fixed Header with Window Controls, Title & Dev URL -->
-      <div class="modal-fixed-header">
-        <div class="modal-window-bar">
-          <div class="modal-header-left">
-            <div class="window-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-            </div>
-            <div class="modal-header-titles">
-              <span class="modal-header-title">{{ proj.title }}</span>
-              <span class="modal-header-subtitle">{{ proj.subtitle }}</span>
-            </div>
-          </div>
-          <div class="modal-header-right">
-            <div class="modal-url-bar">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              <span>{{ proj.title.toLowerCase().replace(' ', '') }}.dev</span>
-            </div>
-            <button type="button" class="modal-close-btn" (click)="closeProjectModal()" aria-label="Close modal">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Contained Scroll Body (Only this area scrolls) -->
-      <div class="modal-scroll-body">
-        <div class="modal-img-wrap" (click)="openImageFullscreen(proj.image)" role="button" aria-label="View full image" tabindex="0">
-          <img [src]="proj.image" [alt]="proj.title" class="modal-preview-img" />
-          <div class="modal-img-expand-hint">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
-              <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
-            </svg>
-            <span>Full View</span>
-          </div>
-        </div>
-
-        <div class="modal-body-content">
-          <div class="modal-header-info">
-            <h2 class="modal-title">{{ proj.title }}</h2>
-            <div class="modal-subtitle">{{ proj.subtitle }}</div>
-          </div>
-
-          <!-- 2 Column: Problem & What I Built -->
-          <div class="modal-two-columns">
-            <div class="modal-col">
-              <div class="modal-col-heading">PROBLEM / PURPOSE</div>
-              <p class="modal-col-text">{{ proj.modalDetails.problem }}</p>
-            </div>
-            <div class="modal-col">
-              <div class="modal-col-heading">WHAT I BUILT</div>
-              <p class="modal-col-text">{{ proj.modalDetails.whatIBuilt }}</p>
-            </div>
-          </div>
-
-          <!-- Key Features -->
-          <div class="modal-section-block">
-            <div class="modal-col-heading">KEY FEATURES</div>
-            <div class="modal-features-grid">
-              @for (feature of proj.modalDetails.keyFeatures; track feature) {
-                <div class="feature-item">
-                  <svg class="feature-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>{{ feature }}</span>
-                </div>
-              }
-            </div>
-          </div>
-
-          <!-- Technologies -->
-          <div class="modal-section-block">
-            <div class="modal-col-heading">TECHNOLOGIES</div>
-            <div class="modal-tech-pills">
-              @for (tech of proj.tags; track tech) {
-                <span class="modal-tech-pill">{{ tech }}</span>
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Pinned Footer Bar (Always visible immediately) -->
-      <div class="modal-footer-bar">
-        <a [href]="proj.githubUrl" target="_blank" rel="noopener" class="modal-btn-github">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub Repository
-        </a>
-        @if (proj.liveUrl) {
-          <a [href]="proj.liveUrl" target="_blank" rel="noopener" class="modal-btn-live">
-            Live Demo
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+          </article>
         }
       </div>
-    </div>
-  </div>
-}
+    </section>
 
-<!-- ============================================================
-     IMAGE FULLSCREEN LIGHTBOX
-     ============================================================ -->
-@if (imageFullscreen()) {
-  <div class="img-lightbox-backdrop" (click)="closeImageFullscreen()" role="dialog" aria-label="Full image view" aria-modal="true">
-    <button class="img-lightbox-close" (click)="closeImageFullscreen()" aria-label="Close fullscreen image">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="img-lightbox-inner" (click)="$event.stopPropagation()">
-      <img [src]="imageFullscreen()" alt="Full screenshot" class="img-lightbox-img" />
-    </div>
-    <p class="img-lightbox-hint">Click outside or press Esc to close</p>
-  </div>
-}
-
-<div class="section-sep" aria-hidden="true"></div>
-
-<!-- ============================================================
-     SKILLS SECTION
-     ============================================================ -->
-<section id="skills" class="section skills-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag reveal">Tech Skills</div>
-      <h2 class="section-title reveal reveal-delay-1">Skills &amp; <span>Technologies</span></h2>
-    </div>
-
-    <div class="skills-grid">
-      @for (group of skillGroups; track group.category) {
-        <div class="skill-group bento-card skill-group-{{ group.theme }} reveal reveal-delay-2">
-          <div class="skill-group-header">
-            <span class="skill-icon-badge">{{ group.icon }}</span>
-            <h3 class="skill-group-title">{{ group.category }}</h3>
-          </div>
-          <div class="skill-pills">
-            @for (skill of group.skills; track skill) {
-              <span class="skill-pill">{{ skill }}</span>
-            }
-          </div>
+    <!-- PROJECTS -->
+    <section class="s" id="projects">
+      <div class="head row reveal">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects that show real engineering</h2>
+          <p class="sub">Click any image to open the full-screen gallery.</p>
         </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     CERTIFICATIONS SECTION (COMMENTED OUT)
-     ============================================================ -->
-<!--
-<section id="certifications" class="section certs-section">
-  <div class="certs-ambient-glow certs-glow-amber" aria-hidden="true"></div>
-  <div class="certs-ambient-glow certs-glow-emerald" aria-hidden="true"></div>
-  <div class="certs-ambient-glow certs-glow-cyan" aria-hidden="true"></div>
-  <div class="certs-ambient-glow certs-glow-crimson" aria-hidden="true"></div>
-  <div class="certs-ambient-glow certs-glow-purple" aria-hidden="true"></div>
-
-  <div class="container relative-z">
-    <div class="section-header">
-      <div class="section-tag reveal">Achievements &amp; Credentials</div>
-      <h2 class="section-title reveal reveal-delay-1">Honors &amp; <span>Certifications</span></h2>
-      <p class="section-subtitle reveal reveal-delay-2">
-        Verified assessments, competitive programming championships, and specialized technical qualifications.
-      </p>
-    </div>
-
-    /* Spotlight Championship Award */
-    <div class="bento-card cert-spotlight-card reveal reveal-delay-2">
-      <div class="cert-spotlight-inner">
-        <div class="cert-spotlight-info">
-          <div class="cert-spotlight-top">
-            <span class="cert-badge-pill gold-glow">
-              <span class="pulse-dot-gold"></span>
-              {{ championAward.rank }}
-            </span>
-            <span class="cert-tag-pill">{{ championAward.category }}</span>
-          </div>
-
-          <h3 class="cert-spotlight-title">
-            <span class="trophy-emoji">🏆</span>
-            {{ championAward.title }}
-          </h3>
-
-          <div class="cert-issuer-meta">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            <span>{{ championAward.issuer }}</span>
-            <span class="meta-separator">•</span>
-            <span class="cert-meta-date">{{ championAward.date }}</span>
-          </div>
-
-          <p class="cert-spotlight-desc">{{ championAward.description }}</p>
-
-          <div class="cert-spotlight-skills">
-            @for (skill of championAward.skills; track skill) {
-              <span class="project-pill-tag">{{ skill }}</span>
-            }
-          </div>
-        </div>
-
-        <div class="cert-spotlight-visual">
-          <div class="cert-trophy-display">
-            <div class="trophy-glow-ring"></div>
-            <div class="trophy-glow-ring secondary"></div>
-            <div class="trophy-center-badge">
-              <span class="trophy-big-icon">🏆</span>
-              <span class="trophy-year">{{ championAward.date }}</span>
-            </div>
-            <div class="cert-credential-code">
-              <span class="code-label">CREDENTIAL REF</span>
-              <code>{{ championAward.credentialId }}</code>
-            </div>
-          </div>
-        </div>
+        <a class="link" href="https://github.com/DevNahidHasan" target="_blank" rel="noreferrer">
+          All on GitHub <svg width="14" height="14"><use href="#i-ext"/></svg>
+        </a>
       </div>
-    </div>
-
-    /* 2-Column Certifications Grid */
-    <div class="certs-grid">
-      @for (cert of certifications; track cert.title) {
-        <div class="bento-card cert-card-modern reveal reveal-delay-2" [attr.data-card-type]="cert.iconType">
-          /* Card Header */
-          <div class="cert-card-header">
-            <div class="cert-brand-group">
-              <div class="cert-icon-wrapper" [attr.data-type]="cert.iconType">
-                @if (cert.iconType === 'angular') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <polygon points="12 2 2 5.5 3.5 17.5 12 22 20.5 17.5 22 5.5" stroke="#dd0031" stroke-width="2" fill="rgba(221, 0, 49, 0.12)"/>
-                    <path d="M12 6L7 17h2.2l1-2.5h3.6l1 2.5h2.2L12 6zm-1 6.5l1-2.8 1 2.8h-2z" fill="#dd0031"/>
-                  </svg>
-                } @else if (cert.iconType === 'problem-solving') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><circle cx="12" cy="12" r="2" fill="#10b981"/>
-                  </svg>
-                } @else if (cert.iconType === 'javascript') {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="#eab308" stroke-width="2" fill="rgba(234, 179, 8, 0.12)"/>
-                    <path d="M9 16.5c0 .8-.5 1.5-1.5 1.5-1.2 0-1.5-1-1.5-1.5M14 18c.8 0 1.5-.4 1.8-.8.2-.2.2-.6.2-1 0-.9-.6-1.3-1.4-1.6l-.6-.2c-.7-.3-1-.6-1-1 0-.5.4-.9 1-.9.7 0 1.1.4 1.2.9" stroke="#eab308" stroke-width="1.8" stroke-linecap="round"/>
-                  </svg>
-                } @else {
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
-                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-                  </svg>
-                }
-              </div>
-              <div class="cert-meta-texts">
-                <span class="cert-issuer-title">{{ cert.issuer }}</span>
-                <span class="cert-category-label">{{ cert.category }}</span>
-              </div>
-            </div>
-
-            <span class="cert-status-badge verified">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              Verified
-            </span>
-          </div>
-
-          /* Card Body */
-          <div class="cert-card-body">
-            <h3 class="cert-card-title">{{ cert.title }}</h3>
-            <p class="cert-card-desc">{{ cert.description }}</p>
-
-            <div class="cert-tags-row">
-              @for (skill of cert.skills; track skill) {
-                <span class="project-pill-tag">{{ skill }}</span>
-              }
-            </div>
-          </div>
-
-          /* Card Footer (Action & Verification Row) */
-          <div class="cert-card-footer">
-            <div class="cert-date-code">
-              <div class="cert-issued-date">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                <span>Issued {{ cert.date }}</span>
-              </div>
-              <span class="cert-code-id">{{ cert.credentialId }}</span>
-            </div>
-
-            <a [href]="cert.url" target="_blank" rel="noopener" class="cert-action-btn" aria-label="Verify credential on HackerRank">
-              <span>Verify</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</section>
--->
-
-<div class="section-sep" aria-hidden="true"></div>
-
-<!-- ============================================================
-     CONTACT SECTION
-     ============================================================ -->
-<section id="contact" class="section contact-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag reveal">Contact Me</div>
-      <h2 class="section-title reveal reveal-delay-1">Let's <span>Connect</span></h2>
-      <p class="section-subtitle reveal reveal-delay-2">
-        Have a project in mind, an exciting role, or just want to chat tech? Feel free to reach out anytime.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <!-- Contact Info Bento Card -->
-      <div class="contact-info reveal reveal-delay-2">
-        <div class="bento-card contact-info-card">
-          <!-- Bento Header -->
-          <div class="bento-card-header">
-            <div class="bento-icon-badge">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
-            <span class="bento-card-label">Direct Channels</span>
-            <div class="bento-active-badge">
-              <span class="pulse-dot"></span>
-              <span>Available for Hire</span>
-            </div>
-          </div>
-
-          <p class="contact-card-desc">
-            I'm currently open to full-time Software Engineer (Junior/Trainee) roles, Backend opportunities, and tech collaborations.
-          </p>
-
-          <!-- Contact items list -->
-          <div class="contact-items">
-            <!-- Email -->
-            <a href="mailto:smnahid.hsn@gmail.com" class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="contact-details">
-                <div class="contact-label">DIRECT EMAIL</div>
-                <div class="contact-value">smnahid.hsn@gmail.com</div>
-              </div>
-              <div class="contact-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="7" y1="17" x2="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-              </div>
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </div>
-              <div class="contact-details">
-                <div class="contact-label">LINKEDIN</div>
-                <div class="contact-value">linkedin.com/in/DevNahidHasan</div>
-              </div>
-              <div class="contact-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="7" y1="17" x2="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-              </div>
-            </a>
-
-            <!-- GitHub (Commented Out)
-            <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-              </div>
-              <div class="contact-details">
-                <div class="contact-label">GITHUB</div>
-                <div class="contact-value">github.com/DevNahidHasan</div>
-              </div>
-              <div class="contact-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="7" y1="17" x2="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-              </div>
-            </a>
-            -->
-
-            <!-- Location -->
-            <div class="contact-item static-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="contact-details">
-                <div class="contact-label">LOCATION</div>
-                <div class="contact-value">Dhaka, Bangladesh <span class="timezone-pill">UTC+6</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Preference card -->
-          <div class="contact-focus-box">
-            <div class="focus-title">
-              <span class="focus-dot">✦</span> Preferred Roles & Work Mode
-            </div>
-            <div class="focus-tags">
-              <span class="bento-chip">Backend Engineer</span>
-              <span class="bento-chip">Software Engineer (Trainee/Jr)</span>
-              <span class="bento-chip">Java & Spring Boot</span>
-              <span class="bento-chip">On-Site / Hybrid / Remote</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Form Bento Card -->
-      <div class="contact-form-wrap reveal reveal-delay-3">
-        <div class="bento-card contact-form-card">
-          <!-- Bento Header -->
-          <div class="bento-card-header">
-            <div class="bento-icon-badge">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
-            </div>
-            <span class="bento-card-label">Send a Message</span>
-            <div class="bento-role-badge">
-              <span class="role-sparkle">⚡</span>
-              <span>Fast Response</span>
-            </div>
-          </div>
-
-          @if (formSubmitted()) {
-            <div class="form-success">
-              <canvas class="party-popper-canvas" #popperCanvas></canvas>
-              <div class="success-shockwave shockwave-1"></div>
-              <div class="success-shockwave shockwave-2"></div>
-
-              <div class="form-success-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-              </div>
-
-              <div class="success-badge-tag">
-                <span>🎉 Message Sent!</span>
-              </div>
-
-              <h3 class="success-title">Message Sent Successfully!</h3>
-              <p class="success-desc">Thank you for reaching out. I've received your note and will get back to you shortly.</p>
-
-              <button type="button" class="form-reset-btn" (click)="resetForm()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <polyline points="1 4 1 10 7 10"/>
-                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
-                </svg>
-                <span>Send Another Message</span>
-              </button>
-            </div>
-          } @else {
-            <form class="contact-form" (ngSubmit)="submitForm()">
-              @if (formError()) {
-                <div class="form-error-msg">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                  <span>{{ formErrorMessage() }}</span>
-                </div>
-              }
-
-              <div class="form-row-two">
-                <div class="form-group">
-                  <label for="name">
-                    <span>Your Name</span>
-                    <span class="required-star">*</span>
-                  </label>
-                  <div class="input-wrap">
-                    <input
-                      id="name"
-                      type="text"
-                      [(ngModel)]="contactForm.name"
-                      name="name"
-                      placeholder="e.g. Alex Rahman"
-                      autocomplete="name"
-                      (blur)="touchField('name')"
-                      (input)="touchField('name')"
-                      [class.input-error]="fieldTouched().name && getNameError()"
-                      [disabled]="formSubmitting()">
-                  </div>
-                  <div class="field-error-slot">
-                    @if (fieldTouched().name && getNameError()) {
-                      <span class="field-error-text">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        {{ getNameError() }}
-                      </span>
+      <div id="projects-list">
+        @for (p of projects; track p.slug; let pi = $index) {
+          <article
+            class="proj reveal"
+            [class.special]="p.flagship"
+            [class.flag]="p.flagship"
+            [attr.data-label]="p.flagship ? 'Flagship project' : null"
+            [attr.data-i]="pi"
+            [style.--c1]="p.c[0]"
+            [style.--c2]="p.c[1]"
+          >
+            <div class="gal" [style.--g1]="p.g[0]" [style.--g2]="p.g[1]">
+              <div class="car" [attr.data-pos]="getSlidePos(pi)">
+                <button
+                  type="button"
+                  class="cbtn prev"
+                  aria-label="Previous image"
+                  (click)="stepCarousel(pi, -1, $event)"
+                >
+                  <svg><use href="#i-left"/></svg>
+                </button>
+                <div
+                  class="vp"
+                  tabindex="0"
+                  role="button"
+                  [attr.aria-label]="'Open ' + p.name + ' gallery'"
+                  (click)="openLightbox(pi)"
+                  (keydown)="onViewportKeydown($event, pi)"
+                >
+                  <div class="track" [style.transform]="'translateX(-' + (getSlidePos(pi) * 100) + '%)'">
+                    @for (slide of p.slides; track $index; let si = $index) {
+                      <div class="slide">
+                        <ng-container
+                          *ngTemplateOutlet="slideContent; context: { project: p, index: si }"
+                        ></ng-container>
+                      </div>
                     }
                   </div>
+                  <span class="zoom">Click to expand</span>
                 </div>
-
-                <!-- Optional Company field -->
-                <div class="form-group">
-                  <label for="company">
-                    <span>Company / Organization</span>
-                    <span class="optional-tag">optional</span>
-                  </label>
-                  <div class="input-wrap">
-                    <input
-                      id="company"
-                      type="text"
-                      [(ngModel)]="contactForm.company"
-                      name="company"
-                      placeholder="e.g. Google, Startup X, Freelance…"
-                      autocomplete="organization"
-                      [disabled]="formSubmitting()">
-                  </div>
-                  <div class="field-error-slot" aria-hidden="true"></div>
-                </div>
-              </div>
-
-              <!-- Email field (full width below Name & Company) -->
-              <div class="form-group">
-                <label for="email">
-                  <span>Email Address</span>
-                  <span class="required-star">*</span>
-                </label>
-                <div class="input-wrap">
-                  <input
-                    id="email"
-                    type="email"
-                    [(ngModel)]="contactForm.email"
-                    name="email"
-                    placeholder="e.g. alex@company.com"
-                    autocomplete="email"
-                    (blur)="touchField('email')"
-                    (input)="touchField('email')"
-                    [class.input-error]="fieldTouched().email && getEmailError()"
-                    [disabled]="formSubmitting()">
-                </div>
-                <div class="field-error-slot">
-                  @if (fieldTouched().email && getEmailError()) {
-                    <span class="field-error-text">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                      {{ getEmailError() }}
-                    </span>
+                <button
+                  type="button"
+                  class="cbtn next"
+                  aria-label="Next image"
+                  (click)="stepCarousel(pi, 1, $event)"
+                >
+                  <svg><use href="#i-right"/></svg>
+                </button>
+                <div class="dots">
+                  @for (slide of p.slides; track $index; let si = $index) {
+                    <button
+                      type="button"
+                      [class.on]="getSlidePos(pi) === si"
+                      [attr.aria-label]="'Image ' + (si + 1)"
+                      (click)="goToSlide(pi, si, $event)"
+                    ></button>
                   }
                 </div>
               </div>
+            </div>
 
-              <div class="form-group form-group-message">
-                <label for="message">
-                  <span>Your Message</span>
-                  <span class="required-star">*</span>
-                </label>
-                <div class="input-wrap input-wrap-textarea">
-                  <textarea
-                    id="message"
-                    [(ngModel)]="contactForm.message"
-                    name="message"
-                    rows="5"
-                    placeholder="Tell me about your team, project, or an opportunity..."
-                    (blur)="touchField('message')"
-                    (input)="touchField('message')"
-                    [class.input-error]="fieldTouched().message && getMessageError()"
-                    [disabled]="formSubmitting()"></textarea>
-                </div>
-                <div class="field-error-slot">
-                  @if (fieldTouched().message && getMessageError()) {
-                    <span class="field-error-text">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                      {{ getMessageError() }}
-                    </span>
+            <div class="pbody">
+              <p class="cat">{{ p.cat }}</p>
+              <h3>{{ p.name }}</h3>
+              <p>{{ p.tagline }}</p>
+              <div class="pmid">
+                <ul class="bul">
+                  @for (b of p.bullets; track $index) {
+                    <li><svg><use href="#i-check"/></svg>{{ b }}</li>
                   }
-                </div>
+                </ul>
+                <ul class="tags">
+                  @for (t of p.tags; track t) {
+                    <li>{{ t }}</li>
+                  }
+                </ul>
               </div>
+              <div class="pbtns">
+                <a
+                  class="btn sm demo"
+                  [id]="'demo-' + p.slug"
+                  [href]="p.demo || '#'"
+                  [attr.target]="p.demo ? '_blank' : null"
+                  [attr.rel]="p.demo ? 'noreferrer' : null"
+                  (click)="onDemoClick($event, p)"
+                >
+                  <svg><use href="#i-play"/></svg>Live demo
+                </a>
+                <a
+                  class="btn sm ghost"
+                  [id]="'repo-' + p.slug"
+                  [href]="p.repo"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <svg><use href="#i-gh"/></svg>Source code
+                </a>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
 
-              <button type="submit" class="contact-submit-btn" [disabled]="formSubmitting()">
-                @if (formSubmitting()) {
-                  <span class="btn-spinner"></span>
-                  <span>Sending Message...</span>
-                } @else {
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                  <span>Send Message</span>
-                  <span class="btn-sparkle">✦</span>
-                }
-              </button>
-            </form>
-          }
+    <!-- ACHIEVEMENTS -->
+    <section class="s" id="achievements">
+      <div class="head reveal">
+        <p class="eyebrow">Achievements &amp; training</p>
+        <h2>Recognition and proven learning</h2>
+      </div>
+      <div class="ach-grid">
+        <article class="ac special reveal" data-label="Top achievement">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-trophy"/></svg></span>
+            <span class="ac-kind">Contest · Champion</span>
+          </div>
+          <h3>Section Champion — <i>Take Off</i> Programming Contest</h3>
+          <p>Secured a top-100 overall rank across preliminary and final rounds among hundreds of university participants.</p>
+          <ul class="ac-tags">
+            <li>🏆 Section Champion</li>
+            <li>Top 100 overall</li>
+            <li>Algorithms</li>
+          </ul>
+          <div class="ac-foot">
+            <span>Competitive programming</span>
+            <strong>Top 100</strong>
+          </div>
+        </article>
+
+        <article class="ac special reveal" data-label="Finalist">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-trophy"/></svg></span>
+            <span class="ac-kind">Contest · Finalist</span>
+          </div>
+          <h3>Unlock the Algorithm</h3>
+          <p>Recognized for high-speed algorithmic reasoning and problem-solving efficiency.</p>
+          <ul class="ac-tags">
+            <li>Finalist</li>
+            <li>Problem solving</li>
+            <li>Speed</li>
+          </ul>
+          <div class="ac-foot">
+            <span>Competitive programming</span>
+            <strong>Finalist</strong>
+          </div>
+        </article>
+
+        <article class="ac reveal">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-book"/></svg></span>
+            <span class="ac-kind">Training</span>
+          </div>
+          <h3>Enterprise Java &amp; Spring Framework Engineering</h3>
+          <ul class="ac-list">
+            <li>Core Java, collections &amp; concurrency</li>
+            <li>Design patterns (Singleton, Prototype, Builder)</li>
+            <li>Spring MVC, DI &amp; IoC</li>
+            <li>JDBC, Spring Data JPA &amp; Hibernate</li>
+            <li>Spring Security (session &amp; RBAC)</li>
+          </ul>
+        </article>
+
+        <article class="ac reveal">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-book"/></svg></span>
+            <span class="ac-kind">Training</span>
+          </div>
+          <h3>Microservices, Spring Boot REST &amp; OAuth2</h3>
+          <ul class="ac-list">
+            <li>REST architecture &amp; global exception handling</li>
+            <li>Service decomposition &amp; DDD</li>
+            <li>Service discovery &amp; API Gateway</li>
+            <li>JWT &amp; Keycloak with Angular + Spring Boot</li>
+            <li>Angular SPA architecture &amp; RxJS</li>
+          </ul>
+        </article>
+
+        <article class="ac reveal">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-code"/></svg></span>
+            <span class="ac-kind">Coding profile</span>
+          </div>
+          <h3>LeetCode</h3>
+          <p>Regular practice in data structures, algorithms and problem solving.</p>
+          <a class="link" href="https://leetcode.com/u/DevNahidHasan" target="_blank" rel="noreferrer">
+            View LeetCode <svg width="13" height="13"><use href="#i-ext"/></svg>
+          </a>
+        </article>
+
+        <article class="ac reveal">
+          <div class="ac-top">
+            <span class="ico"><svg><use href="#i-code"/></svg></span>
+            <span class="ac-kind">Coding profile</span>
+          </div>
+          <h3>HackerRank</h3>
+          <p>Regular practice and skill assessments in Problem Solving, SQL and JavaScript.</p>
+          <a class="link" href="https://www.hackerrank.com/profile/DevNahidHasan" target="_blank" rel="noreferrer">
+            View HackerRank <svg width="13" height="13"><use href="#i-ext"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS (commented out for now)
+    <section class="s" id="certifications">
+      <div class="head row reveal">
+        <div>
+          <p class="eyebrow">Certifications</p>
+          <h2>Verified skills and credentials</h2>
+          <p class="sub">Verified credentials in Enterprise Java, Spring Boot microservices, cloud, and databases.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer class="footer">
-  <div class="container footer-inner">
-
-    <!-- Left: Logo -->
-    <div class="footer-logo">
-      <span class="logo-bracket">&lt;</span>
-      <span class="logo-name">NH</span>
-      <span class="logo-bracket">&gt;</span>
-    </div>
-
-    <!-- Center: Credit + Built-with tag -->
-    <div class="footer-center">
-      <p class="footer-text">
-        Designed &amp; Built by <span class="accent">S M Nahid Hasan</span> · {{ currentYear }}
-      </p>
-      <div class="footer-built-tag">
-        <span class="built-dot"></span>
-        Built with Angular · TypeScript · SCSS
+      <div class="cc-grid">
+        @for (cert of certifications; track cert.credentialId) {
+          <article
+            class="cc reveal"
+            [class.special]="!!cert.specialLabel"
+            [attr.data-label]="cert.specialLabel || null"
+          >
+            <div class="cc-top">
+              <span class="cc-logo">{{ cert.logo }}</span>
+              <span class="cc-date">{{ cert.date }}</span>
+            </div>
+            <h3>{{ cert.title }}</h3>
+            <p class="cc-issuer">{{ cert.issuer }}</p>
+            <ul class="cc-tags">
+              @for (tag of cert.tags; track tag) {
+                <li>{{ tag }}</li>
+              }
+            </ul>
+            <div class="cc-foot">
+              <span>ID · {{ cert.credentialId }}</span>
+              <a
+                [href]="cert.verifyUrl"
+                class="cc-verify"
+                (click)="onVerifyClick($event, cert.verifyUrl)"
+              >
+                Verify <svg width="13" height="13"><use href="#i-ext"/></svg>
+              </a>
+            </div>
+          </article>
+        }
       </div>
-    </div>
+    </section>
+    -->
 
-    <!-- Right: Social Links -->
-    <div class="footer-links">
-      <a href="https://github.com/DevNahidHasan" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <span class="footer-link-sep"></span>
-      <a href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <span class="footer-link-sep"></span>
-      <a href="mailto:smnahid.hsn@gmail.com" aria-label="Email">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
-    </div>
+    <!-- CONTACT -->
+    <section class="s" id="contact">
+      <div class="head row reveal">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something great together</h2>
+          <p class="sub">Available for software engineering roles in Dhaka and remote opportunities worldwide.</p>
+        </div>
+      </div>
+      <div class="contact reveal">
+        <span class="orb o1"></span>
+        <span class="orb o2"></span>
+        <div class="ct-info">
+          <span class="ct-badge"><i></i>Available for new roles</span>
+          <h3>Direct Channels &amp; Profiles</h3>
+          <p>Hiring for a backend or full-stack role? Pick a channel below or send a message — I'd love to hear about it.</p>
+          <div class="ct-grid">
+            <!-- 1. Email Box -->
+            <div class="ct-card wide ct-email-box">
+              <div class="ct-email-top">
+                <span class="ct-ico em"><svg><use href="#i-mail"/></svg></span>
+                <span class="ct-txt">
+                  <small>Direct Email</small>
+                  <b id="contactEmailVal">smnahid.hsn&#64;gmail.com</b>
+                </span>
+              </div>
+              <div class="ct-email-actions">
+                <button
+                  type="button"
+                  class="ct-action-btn copy-btn"
+                  id="copyEmailBtn"
+                  [class.copied]="emailCopied()"
+                  aria-label="Copy email address"
+                  (click)="copyEmail()"
+                >
+                  <svg class="act-ico">
+                    <use [attr.href]="emailCopied() ? '#i-check' : '#i-copy'"/>
+                  </svg>
+                  <span class="btn-txt">{{ emailCopied() ? 'Copied!' : 'Copy Email' }}</span>
+                </button>
+                <a
+                  href="mailto:smnahid.hsn@gmail.com"
+                  class="ct-action-btn send-btn"
+                  aria-label="Send email via default mail sender"
+                >
+                  <svg class="act-ico"><use href="#i-mail-send"/></svg>
+                  <span>Send Email</span>
+                </a>
+              </div>
+            </div>
 
+            <!-- 2. LinkedIn -->
+            <a class="ct-card wide" href="https://www.linkedin.com/in/DevNahidHasan" target="_blank" rel="noreferrer">
+              <span class="ct-ico li"><svg><use href="#i-in"/></svg></span>
+              <span class="ct-txt"><small>LinkedIn</small><b>DevNahidHasan</b></span>
+              <svg class="arr"><use href="#i-ext"/></svg>
+            </a>
+
+            <!-- 3. GitHub & LeetCode -->
+            <a class="ct-card" href="https://github.com/DevNahidHasan" target="_blank" rel="noreferrer">
+              <span class="ct-ico gh"><svg><use href="#i-gh"/></svg></span>
+              <span class="ct-txt"><small>GitHub</small><b>DevNahidHasan</b></span>
+              <svg class="arr"><use href="#i-ext"/></svg>
+            </a>
+            <a class="ct-card" href="https://leetcode.com/u/DevNahidHasan" target="_blank" rel="noreferrer">
+              <span class="ct-ico lc"><svg><use href="#i-code"/></svg></span>
+              <span class="ct-txt"><small>LeetCode</small><b>DevNahidHasan</b></span>
+              <svg class="arr"><use href="#i-ext"/></svg>
+            </a>
+
+            <!-- 4. View / Download Resume -->
+            <a class="ct-card wide" href="resume.pdf" target="_blank" rel="noreferrer">
+              <span class="ct-ico cv"><svg><use href="#i-down"/></svg></span>
+              <span class="ct-txt"><small>Résumé</small><b>View / Download PDF</b></span>
+              <svg class="arr"><use href="#i-ext"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="form" id="contact-form" novalidate (submit)="onSubmitContactForm($event)">
+          <div class="form-head">
+            <span class="ct-ico msg"><svg><use href="#i-send"/></svg></span>
+            <div>
+              <h3>Send me a message</h3>
+            </div>
+          </div>
+
+          <div class="row2">
+            <label>Your name
+              <span class="inp">
+                <svg><use href="#i-user"/></svg>
+                <input
+                  id="f-name"
+                  name="name"
+                  type="text"
+                  placeholder="Jane Doe"
+                  required
+                  autocomplete="name"
+                  [(ngModel)]="contactForm.name"
+                  [class.invalid]="!!formErrors().name"
+                >
+              </span>
+              <span class="err">{{ formErrors().name }}</span>
+            </label>
+            <label>Your email
+              <span class="inp">
+                <svg><use href="#i-mail"/></svg>
+                <input
+                  id="f-email"
+                  name="email"
+                  type="email"
+                  placeholder="jane@company.com"
+                  required
+                  autocomplete="email"
+                  [(ngModel)]="contactForm.email"
+                  [class.invalid]="!!formErrors().email"
+                >
+              </span>
+              <span class="err">{{ formErrors().email }}</span>
+            </label>
+          </div>
+
+          <label>Company / Role (optional)
+            <span class="inp">
+              <svg><use href="#i-layers"/></svg>
+              <input
+                id="f-company"
+                name="company"
+                type="text"
+                placeholder="Company · Position"
+                [(ngModel)]="contactForm.company"
+              >
+            </span>
+          </label>
+
+          <label>Message
+            <textarea
+              id="f-message"
+              name="message"
+              rows="6"
+              placeholder="Tell me about the opportunity or project…"
+              required
+              [(ngModel)]="contactForm.message"
+              [class.invalid]="!!formErrors().message"
+            ></textarea>
+            <span class="err">{{ formErrors().message }}</span>
+          </label>
+
+          <button class="btn" id="f-submit" type="submit" [disabled]="formSubmitting()">
+            @if (formSubmitting()) {
+              <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+              </svg>
+              <span>Sending message…</span>
+            } @else {
+              <svg><use href="#i-send"/></svg>
+              <span>Send message</span>
+            }
+          </button>
+
+          <div
+            class="form-note"
+            id="form-note"
+            [class.show-success]="formNote().type === 'show-success'"
+            [class.show-error]="formNote().type === 'show-error'"
+          >{{ formNote().text }}</div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <span><b>S M Nahid Hasan</b> · Software Engineer</span>
+      <span>Dhaka, Bangladesh · smnahidhasan.com</span>
+    </footer>
   </div>
-</footer>
+</main>
+
+<!-- LIGHTBOX -->
+<div
+  class="lb"
+  id="lb"
+  [class.open]="lightbox().open"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Project image gallery"
+  (click)="onLightboxBackdropClick($event)"
+>
+  <div class="lb-top">
+    <div>
+      <strong id="lb-title">{{ activeLightboxProject().name }}</strong>
+      <small id="lb-cap">{{ activeLightboxCaption() }}</small>
+    </div>
+    <button type="button" class="lb-x" id="lb-close" aria-label="Close gallery" (click)="closeLightbox()">
+      <svg width="20" height="20"><use href="#i-x"/></svg>
+    </button>
+  </div>
+  <div class="lb-stage">
+    <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Previous image" (click)="stepLightbox(-1)">
+      <svg><use href="#i-left"/></svg>
+    </button>
+    <div class="lb-slide" id="lb-slide">
+      <ng-container
+        *ngTemplateOutlet="slideContent; context: { project: activeLightboxProject(), index: lightbox().slideIndex }"
+      ></ng-container>
+    </div>
+    <button type="button" class="lb-nav next" id="lb-next" aria-label="Next image" (click)="stepLightbox(1)">
+      <svg><use href="#i-right"/></svg>
+    </button>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs">
+    @for (slide of activeLightboxProject().slides; track $index; let ti = $index) {
+      <button
+        type="button"
+        [class.on]="lightbox().slideIndex === ti"
+        [attr.data-i]="ti"
+        [attr.aria-label]="'Show image ' + (ti + 1)"
+        (click)="selectLightboxThumb(ti)"
+      >
+        <ng-container
+          *ngTemplateOutlet="slideContent; context: { project: activeLightboxProject(), index: ti }"
+        ></ng-container>
+      </button>
+    }
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" [class.show]="toastVisible()" role="status">{{ toastMessage() }}</div>
