@@ -453,10 +453,9 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
           name: submittedName,
           email: submittedEmail,
           company: submittedCompany || 'N/A',
-          topic: 'Job opportunity',
           message: submittedMessage,
           from_name: 'Portfolio Contact Form',
-          subject: `New Portfolio Message from ${submittedName} (Job opportunity)${
+          subject: `New Portfolio Message from ${submittedName}${
             submittedCompany ? ' @ ' + submittedCompany : ''
           }`,
         }),
