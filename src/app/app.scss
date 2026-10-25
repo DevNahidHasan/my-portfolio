@@ -598,11 +598,14 @@
 }
 
 h1 {
-  font-size: clamp(38px, 5vw, 60px);
-  line-height: 1.06;
-  letter-spacing: -2.5px;
+  font-size: clamp(38px, 4.8vw, 58px);
+  line-height: 1.15;
+  letter-spacing: 0.8px;
+  word-spacing: 7px;
   font-weight: 800;
-  margin: 18px 0 10px;
+  margin: 18px 0 12px;
+  color: var(--fg);
+  display: block;
 }
 
 h1 em {
@@ -611,10 +614,12 @@ h1 em {
 }
 
 .role {
-  font-size: clamp(20px, 2.4vw, 28px);
-  font-weight: 650;
+  font-size: clamp(21px, 2.5vw, 28px);
+  font-weight: 700;
   color: var(--primary);
-  letter-spacing: -0.6px;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  margin-bottom: 2px;
 }
 
 .loc {
@@ -4037,11 +4042,12 @@ footer {
   }
 
   h1 {
-    font-size: clamp(32px, 8.5vw, 42px) !important;
-    letter-spacing: -1.8px !important;
+    font-size: clamp(30px, 8vw, 40px) !important;
+    letter-spacing: 0.5px !important;
+    word-spacing: 5px !important;
   }
   .role {
-    font-size: clamp(17px, 4.8vw, 22px) !important;
+    font-size: clamp(17px, 4.8vw, 21px) !important;
   }
   .lead {
     font-size: 14.5px !important;
@@ -4348,8 +4354,9 @@ footer {
   }
 
   h1 {
-    font-size: 28px !important;
-    letter-spacing: -1.2px !important;
+    font-size: 27px !important;
+    letter-spacing: 0.3px !important;
+    word-spacing: 4px !important;
   }
   .role {
     font-size: 15.5px !important;
