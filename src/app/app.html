@@ -497,6 +497,98 @@
             </div>
           </article>
         }
+
+        <!-- GITHUB TERMINAL CTA CARD -->
+        <article
+          class="proj-gh-card reveal"
+          aria-label="Explore more works on GitHub"
+          (mouseenter)="pauseGhAnimation()"
+          (mouseleave)="resumeGhAnimation()"
+        >
+          <div class="gh-term">
+            <div class="gh-term-header">
+              <div class="gh-term-dots" aria-hidden="true">
+                <span class="dot d-red"></span>
+                <span class="dot d-yellow"></span>
+                <span class="dot d-green"></span>
+              </div>
+              <span class="gh-term-title">github.com/DevNahidHasan — zsh</span>
+              <span class="gh-term-badge"><svg><use href="#i-gh"/></svg></span>
+            </div>
+            <div class="gh-term-body">
+              <div class="term-line prompt">
+                <span class="term-user">nahid@engineer:~$</span>
+                <span class="term-cmd">{{ ghCmdText() }}</span>
+                @if (ghStage() === 'typing') {
+                  <span class="term-cursor typing" aria-hidden="true"></span>
+                }
+              </div>
+              <div class="term-results" [class.has-content]="ghStage() !== 'typing'">
+                @if (ghStage() === 'loading') {
+                  <div class="term-loading">
+                    <span class="term-spinner">⠋</span>
+                    <span>fetching public repositories…</span>
+                  </div>
+                }
+
+                @if (ghStage() === 'results' || ghStage() === 'done') {
+                  @if (ghResultCount() >= 1) {
+                    <div class="term-row animate-in">
+                      <span class="term-check">✔</span>
+                      <span class="term-repo">enterprise-microservices-core</span>
+                      <span class="term-meta">[Java · Spring Boot · Microservice · Keycloak]</span>
+                    </div>
+                  }
+                  @if (ghResultCount() >= 2) {
+                    <div class="term-row animate-in">
+                      <span class="term-check">✔</span>
+                      <span class="term-repo">keycloak-oauth2-angular-spa</span>
+                      <span class="term-meta">[Angular · TypeScript · OAuth2]</span>
+                    </div>
+                  }
+                  @if (ghResultCount() >= 3) {
+                    <div class="term-row animate-in">
+                      <span class="term-check">✔</span>
+                      <span class="term-repo">competitive-programming-vault</span>
+                      <span class="term-meta">[Java · Algorithms · LeetCode]</span>
+                    </div>
+                  }
+                  @if (ghResultCount() >= 4) {
+                    <div class="term-row more animate-in">
+                      <span class="term-ellipsis">…</span>
+                      <span>and 20+ more public repositories &amp; experiments</span>
+                    </div>
+                  }
+                }
+              </div>
+              <div class="term-status" [class.visible]="ghStage() === 'done'">
+                <span class="term-indicator">Status:</span>
+                <span class="status-pulse" aria-hidden="true"></span>
+                <span class="status-text">Actively pushing commits &amp; designing backend systems</span>
+                <span class="term-cursor" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-cta-content">
+            <span class="gh-pill">★ 20+ Public Repositories</span>
+            <h3>Want to see more systems that I have built &amp; raw code?</h3>
+            <p>Explore complete commit histories, architectural diagrams, pull requests, and ongoing open-source experiments.</p>
+            <div class="gh-cta-actions">
+              <a
+                class="btn gh-btn"
+                href="https://github.com/DevNahidHasan"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-github-projects"
+              >
+                <svg class="gh-icon"><use href="#i-gh"/></svg>
+                <span>Explore My Works on GitHub</span>
+                <svg class="ext-icon"><use href="#i-ext"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -831,24 +923,39 @@
   (click)="onLightboxBackdropClick($event)"
 >
   <div class="lb-top">
-    <div>
-      <strong id="lb-title">{{ activeLightboxProject().name }}</strong>
-      <small id="lb-cap">{{ activeLightboxCaption() }}</small>
+    <div class="lb-header-center">
+      <h3 id="lb-title">{{ activeLightboxProject().name }}</h3>
+      <div class="lb-meta">
+        <span class="lb-slide-name">{{ activeLightboxProject().slides[lightbox().slideIndex] }}</span>
+        <span class="lb-counter">{{ lightbox().slideIndex + 1 }} / {{ activeLightboxProject().slides.length }}</span>
+      </div>
     </div>
     <button type="button" class="lb-x" id="lb-close" aria-label="Close gallery" (click)="closeLightbox()">
       <svg width="20" height="20"><use href="#i-x"/></svg>
     </button>
   </div>
   <div class="lb-stage">
-    <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Previous image" (click)="stepLightbox(-1)">
+    <button
+      type="button"
+      class="lb-nav prev"
+      id="lb-prev"
+      aria-label="Previous image"
+      (click)="stepLightbox(-1); $event.stopPropagation()"
+    >
       <svg><use href="#i-left"/></svg>
     </button>
-    <div class="lb-slide" id="lb-slide">
+    <div class="lb-slide" id="lb-slide" (click)="$event.stopPropagation()">
       <ng-container
         *ngTemplateOutlet="slideContent; context: { project: activeLightboxProject(), index: lightbox().slideIndex }"
       ></ng-container>
     </div>
-    <button type="button" class="lb-nav next" id="lb-next" aria-label="Next image" (click)="stepLightbox(1)">
+    <button
+      type="button"
+      class="lb-nav next"
+      id="lb-next"
+      aria-label="Next image"
+      (click)="stepLightbox(1); $event.stopPropagation()"
+    >
       <svg><use href="#i-right"/></svg>
     </button>
   </div>
@@ -859,7 +966,7 @@
         [class.on]="lightbox().slideIndex === ti"
         [attr.data-i]="ti"
         [attr.aria-label]="'Show image ' + (ti + 1)"
-        (click)="selectLightboxThumb(ti)"
+        (click)="selectLightboxThumb(ti); $event.stopPropagation()"
       >
         <ng-container
           *ngTemplateOutlet="slideContent; context: { project: activeLightboxProject(), index: ti }"

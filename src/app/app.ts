@@ -118,6 +118,14 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     text: '',
   });
 
+  // ─── GitHub Terminal Animation State ──────────────────────
+  readonly ghFullCmd = 'gh repo list DevNahidHasan --limit 5';
+  readonly ghCmdText = signal(this.ghFullCmd);
+  readonly ghStage = signal<'typing' | 'loading' | 'results' | 'done'>('done');
+  readonly ghResultCount = signal<number>(4);
+  private ghAnimTimer?: ReturnType<typeof setTimeout>;
+  private ghIsHovered = false;
+
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -135,6 +143,7 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     }
     this.setTheme(saved);
     this.updateActiveNav();
+    this.startGhAnimationLoop();
   }
 
   ngAfterViewInit(): void {
@@ -150,11 +159,79 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
 
   ngOnDestroy(): void {
     this.revealObserver?.disconnect();
+    this.clearGhAnimation();
     if (this.clickScrollTimer) clearTimeout(this.clickScrollTimer);
     if (this.toastTimer) clearTimeout(this.toastTimer);
     if (this.copyTimer) clearTimeout(this.copyTimer);
     if (this.isBrowser) {
       document.body.style.overflow = '';
+    }
+  }
+
+  // ─── GitHub Terminal Animation ────────────────────────────
+  startGhAnimationLoop(): void {
+    if (!this.isBrowser) return;
+    this.clearGhAnimation();
+
+    this.ghStage.set('typing');
+    this.ghCmdText.set('');
+    this.ghResultCount.set(0);
+
+    let charIdx = 0;
+    const typeNext = () => {
+      if (charIdx < this.ghFullCmd.length) {
+        this.ghCmdText.set(this.ghFullCmd.slice(0, ++charIdx));
+        this.ghAnimTimer = setTimeout(typeNext, 28);
+      } else {
+        this.ghAnimTimer = setTimeout(() => {
+          this.ghStage.set('loading');
+          this.ghAnimTimer = setTimeout(() => {
+            this.ghStage.set('results');
+            this.revealGhResultItem(1);
+          }, 450);
+        }, 180);
+      }
+    };
+
+    this.ghAnimTimer = setTimeout(typeNext, 350);
+  }
+
+  private revealGhResultItem(itemIdx: number): void {
+    this.ghResultCount.set(itemIdx);
+    if (itemIdx < 4) {
+      this.ghAnimTimer = setTimeout(() => {
+        this.revealGhResultItem(itemIdx + 1);
+      }, 140);
+    } else {
+      this.ghStage.set('done');
+      this.scheduleGhNextCycle(3500);
+    }
+  }
+
+  private scheduleGhNextCycle(delay: number): void {
+    if (this.ghAnimTimer) clearTimeout(this.ghAnimTimer);
+    this.ghAnimTimer = setTimeout(() => {
+      if (!this.ghIsHovered) {
+        this.startGhAnimationLoop();
+      }
+    }, delay);
+  }
+
+  pauseGhAnimation(): void {
+    this.ghIsHovered = true;
+  }
+
+  resumeGhAnimation(): void {
+    this.ghIsHovered = false;
+    if (this.ghStage() === 'done') {
+      this.scheduleGhNextCycle(1800);
+    }
+  }
+
+  private clearGhAnimation(): void {
+    if (this.ghAnimTimer) {
+      clearTimeout(this.ghAnimTimer);
+      this.ghAnimTimer = undefined;
     }
   }
 

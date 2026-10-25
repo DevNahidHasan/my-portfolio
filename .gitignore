@@ -44,3 +44,8 @@ __screenshots__/
 Thumbs.db
 *.json.log
 cloudflare-pages-custom-domain-portfolio.json
+
+# Agent related files
+AGENTS.md
+card-hover-manual.md
+github-card-content.md
