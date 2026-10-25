@@ -1,5 +1,11 @@
 export type ThemeId = 'blue' | 'dark' | 'emerald' | 'teal';
 
+/**
+ * Change this ONE single value to change the site's default theme!
+ * Available options: 'teal' | 'blue' | 'dark' | 'emerald'
+ */
+export const DEFAULT_THEME: ThemeId = 'teal';
+
 export type SectionId =
   | 'home'
   | 'about'
@@ -73,17 +79,17 @@ export interface CertificationItem {
 }
 
 export const THEME_OPTIONS: ThemeOption[] = [
-  { id: 'blue', label: 'Royal Blue' },
+  { id: 'teal', label: 'Teal & Blue' },
   { id: 'dark', label: 'Dark Sleek' },
   { id: 'emerald', label: 'Emerald & Slate' },
-  { id: 'teal', label: 'Teal & Blue' },
+  { id: 'blue', label: 'Royal Blue' },
 ];
 
 export const THEME_NAMES: Record<ThemeId, string> = {
-  blue: 'Royal Blue',
+  teal: 'Teal & Blue',
   dark: 'Dark Sleek',
   emerald: 'Emerald & Slate',
-  teal: 'Teal & Blue',
+  blue: 'Royal Blue',
 };
 
 export const NAV_ITEMS: NavItem[] = [

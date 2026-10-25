@@ -2,7 +2,11 @@
    GLOBAL THEME TOKENS, BASE RESETS & SHARED UTILITIES
    ========================================================================== */
 
-:root,
+:root {
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --r: 18px;
+}
+
 html[data-theme='blue'] {
   --theme: 'blue';
   --bg: #f7f8fc;
@@ -40,7 +44,6 @@ html[data-theme='blue'] {
   --bg-glow2: rgba(255, 150, 80, 0.2);
   --shadow: 0 6px 24px rgba(36, 80, 235, 0.07);
   --r: 18px;
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 html[data-theme='dark'] {
@@ -119,6 +122,7 @@ html[data-theme='emerald'] {
   --shadow: 0 6px 24px rgba(15, 157, 120, 0.08);
 }
 
+:root,
 html[data-theme='teal'] {
   --theme: 'teal';
   --bg: #f3f8fa;
@@ -167,11 +171,42 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
   overflow-x: clip;
+  scrollbar-width: auto;
+  scrollbar-color: var(--tint-b2) var(--bg);
+}
+
+/* Custom Theme-Adaptive Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tint-b2);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 
 /* Fixed ambient background glow orbs across the entire page */
 body {
-  font-family: var(--font);
+  font-family: var(
+    --font,
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Arial,
+    sans-serif
+  );
   background: var(--bg);
   color: var(--fg);
   font-size: 15px;
@@ -321,6 +356,13 @@ button {
   height: 22px;
 }
 
+.ico img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
 /* Sections & Headings */
 section.s {
   padding-top: 54px;
@@ -402,7 +444,9 @@ h2 {
     linear-gradient(145deg, var(--surface), var(--warm)) padding-box,
     linear-gradient(135deg, var(--primary), var(--primary-l) 55%, var(--acc-l)) border-box !important;
   box-shadow: 0 20px 54px rgba(var(--p-rgb), 0.18) !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .special:hover {
@@ -516,7 +560,9 @@ h2 {
 .reveal {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity 0.7s, transform 0.7s;
+  transition:
+    opacity 0.7s,
+    transform 0.7s;
 }
 
 .reveal.in {

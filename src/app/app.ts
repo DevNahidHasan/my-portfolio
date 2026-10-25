@@ -15,6 +15,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   CERTIFICATIONS_DATA,
+  DEFAULT_THEME,
   HERO_STACK_BADGES,
   MOCK_CHART_HEIGHTS,
   MOCK_ROW_STATUSES,
@@ -61,7 +62,7 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   readonly mockRowStatuses = MOCK_ROW_STATUSES;
 
   // ─── Reactive UI Signals ──────────────────────────────────
-  readonly currentTheme = signal<ThemeId>('blue');
+  readonly currentTheme = signal<ThemeId>(DEFAULT_THEME);
   readonly themeMenuOpen = signal<'desktop' | 'mobile' | null>(null);
   readonly mobileDrawerOpen = signal(false);
   readonly activeSection = signal<SectionId>('home');
@@ -123,14 +124,14 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
 
   ngOnInit(): void {
     if (!this.isBrowser) return;
-    let saved: ThemeId = 'blue';
+    let saved: ThemeId = DEFAULT_THEME;
     try {
       const fromStorage = localStorage.getItem('portfolio-theme') as ThemeId | null;
       if (fromStorage && this.themeNames[fromStorage]) {
         saved = fromStorage;
       }
     } catch {
-      saved = 'blue';
+      saved = DEFAULT_THEME;
     }
     this.setTheme(saved);
     this.updateActiveNav();
@@ -160,7 +161,7 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   // ─── Theme Switcher ───────────────────────────────────────
   setTheme(theme: ThemeId): void {
     if (!this.themeNames[theme]) {
-      theme = 'blue';
+      theme = DEFAULT_THEME;
     }
     this.currentTheme.set(theme);
     if (this.isBrowser) {

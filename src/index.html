@@ -51,12 +51,11 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('portfolio-theme') || 'blue';
-        if (t !== 'blue' && t !== 'dark' && t !== 'emerald' && t !== 'teal') t = 'blue';
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'blue');
-      }
+        var saved = localStorage.getItem('portfolio-theme');
+        if (saved && ['blue', 'dark', 'emerald', 'teal'].indexOf(saved) !== -1) {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {}
     })();
   </script>
 

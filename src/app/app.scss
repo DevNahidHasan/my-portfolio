@@ -2941,6 +2941,13 @@ h1 em {
   height: 20px;
 }
 
+.ct-ico img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
 .ct-ico.em {
   background: linear-gradient(135deg, #6366f1, #4338ca);
 }
@@ -2951,7 +2958,11 @@ h1 em {
   background: #24292f;
 }
 .ct-ico.lc {
-  background: #f89f1b;
+  background: #ffffff;
+  border: 1px solid rgba(248, 159, 27, 0.4);
+}
+[data-theme='dark'] .ct-ico.lc {
+  background: #1e222a;
 }
 .ct-ico.cv {
   background: linear-gradient(135deg, #5ee6a1, #15906a);
