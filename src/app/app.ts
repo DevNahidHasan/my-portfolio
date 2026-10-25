@@ -2,11 +2,13 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  ElementRef,
   HostListener,
   Inject,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
+  ViewChild,
   ViewEncapsulation,
   computed,
   signal,
@@ -118,6 +120,15 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     text: '',
   });
 
+  // ─── Hero Name Typewriter State ───────────────────────────
+  @ViewChild('heroNameEl') heroNameEl?: ElementRef<HTMLElement>;
+  readonly heroFullName = 'S M Nahid Hasan';
+  readonly heroCursorBlinking = signal(false);
+  private heroNameTimer?: ReturnType<typeof setTimeout>;
+  private heroCursorTimer?: ReturnType<typeof setTimeout>;
+  private heroNameIsHovered = false;
+  private heroNameTypingStage: 'typing' | 'holding' | 'deleting' | 'paused' = 'holding';
+
   // ─── GitHub Terminal Animation State ──────────────────────
   readonly ghFullCmd = 'gh repo list DevNahidHasan --limit 5';
   readonly ghCmdText = signal(this.ghFullCmd);
@@ -150,6 +161,7 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     if (!this.isBrowser) return;
     this.setupScrollReveal();
     this.updateActiveNav();
+    this.startHeroNameAnimationLoop(500);
   }
 
   ngAfterViewChecked(): void {
@@ -160,12 +172,113 @@ export class App implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   ngOnDestroy(): void {
     this.revealObserver?.disconnect();
     this.clearGhAnimation();
+    this.clearHeroNameAnimation();
+    this.setHeroNameText(this.heroFullName);
     if (this.clickScrollTimer) clearTimeout(this.clickScrollTimer);
     if (this.toastTimer) clearTimeout(this.toastTimer);
     if (this.copyTimer) clearTimeout(this.copyTimer);
     if (this.isBrowser) {
       document.body.style.overflow = '';
     }
+  }
+
+  // ─── Hero Name Typewriter Animation ───────────────────────
+  startHeroNameAnimationLoop(initialDelay = 500): void {
+    if (!this.isBrowser) return;
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+    } catch {
+      // Ignore media query error in non-standard environments
+    }
+
+    this.clearHeroNameAnimation();
+    this.heroNameTimer = setTimeout(() => {
+      this.typeHeroName(0);
+    }, initialDelay);
+  }
+
+  private setHeroNameText(text: string): void {
+    if (this.heroNameEl?.nativeElement) {
+      // Use zero-width space (\u200B) when empty to lock line-box metrics and prevent baseline jump
+      this.heroNameEl.nativeElement.textContent = text || '\u200B';
+    }
+  }
+
+  private typeHeroName(charIdx: number): void {
+    if (this.heroNameIsHovered) {
+      this.heroNameTimer = setTimeout(() => this.typeHeroName(charIdx), 200);
+      return;
+    }
+    this.heroNameTypingStage = 'typing';
+    if (charIdx <= this.heroFullName.length) {
+      this.setHeroNameText(this.heroFullName.slice(0, charIdx));
+      if (charIdx < this.heroFullName.length) {
+        this.heroNameTimer = setTimeout(() => this.typeHeroName(charIdx + 1), 50);
+      } else {
+        this.heroNameTypingStage = 'holding';
+        // Blink 3 times (~3.3s) then rest calm and solid
+        this.heroCursorBlinking.set(true);
+        if (this.heroCursorTimer) clearTimeout(this.heroCursorTimer);
+        this.heroCursorTimer = setTimeout(() => {
+          this.heroCursorBlinking.set(false);
+        }, 3300);
+        this.scheduleHeroNameNextCycle(11000);
+      }
+    }
+  }
+
+  private deleteHeroName(charIdx: number): void {
+    if (this.heroNameIsHovered) {
+      this.heroNameTimer = setTimeout(() => this.deleteHeroName(charIdx), 200);
+      return;
+    }
+    this.heroCursorBlinking.set(false);
+    if (this.heroCursorTimer) clearTimeout(this.heroCursorTimer);
+    this.heroNameTypingStage = 'deleting';
+    if (charIdx >= 0) {
+      this.setHeroNameText(this.heroFullName.slice(0, charIdx));
+      if (charIdx > 0) {
+        this.heroNameTimer = setTimeout(() => this.deleteHeroName(charIdx - 1), 28);
+      } else {
+        this.heroNameTypingStage = 'paused';
+        this.heroNameTimer = setTimeout(() => {
+          this.typeHeroName(0);
+        }, 500);
+      }
+    }
+  }
+
+  private scheduleHeroNameNextCycle(delay: number): void {
+    this.clearHeroNameAnimation();
+    this.heroNameTimer = setTimeout(() => {
+      if (this.heroNameIsHovered) {
+        this.scheduleHeroNameNextCycle(1500);
+      } else {
+        this.deleteHeroName(this.heroFullName.length);
+      }
+    }, delay);
+  }
+
+  pauseHeroNameAnimation(): void {
+    this.heroNameIsHovered = true;
+  }
+
+  resumeHeroNameAnimation(): void {
+    this.heroNameIsHovered = false;
+  }
+
+  private clearHeroNameAnimation(): void {
+    if (this.heroNameTimer) {
+      clearTimeout(this.heroNameTimer);
+      this.heroNameTimer = undefined;
+    }
+    if (this.heroCursorTimer) {
+      clearTimeout(this.heroCursorTimer);
+      this.heroCursorTimer = undefined;
+    }
+    this.heroCursorBlinking.set(false);
   }
 
   // ─── GitHub Terminal Animation ────────────────────────────
